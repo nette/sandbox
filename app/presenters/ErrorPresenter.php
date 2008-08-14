@@ -2,19 +2,48 @@
 
 /**
  * My Application
+ *
+ * @copyright  Copyright (c) 2008 John Doe
+ * @package    MyApplication
+ * @version    $Id$
  */
 
 
 
 /**
  * Error presenter.
+ *
+ * @author     John Doe
+ * @package    MyApplication
  */
 class ErrorPresenter extends BasePresenter
 {
 
-	public function renderDefault()
+	/**
+	 * @return void
+	 */
+	public function renderDefault($exception)
 	{
-        $this->template->title = 'An error occurred';
+		if ($this->isAjax()) {
+			$this->getAjaxDriver()->events[] = array('error', $exception->getMessage());
+			$this->terminate();
+
+		} else {
+			$this->template->robots = 'noindex,noarchive';
+
+			if ($exception instanceof /*Nette\Application\*/BadRequestException) {
+				Environment::getHttpResponse()->setCode($exception->getCode());
+				$this->template->title = '404 Not Found';
+				$this->changeScene('404');
+
+			} else {
+				Environment::getHttpResponse()->setCode(500);
+				$this->template->title = '500 Internal Server Error';
+				$this->changeScene('500');
+
+				/*Nette\*/Debug::processException($exception, FALSE);
+			}
+		}
 	}
 
 }

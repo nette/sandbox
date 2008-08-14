@@ -1,51 +1,55 @@
 <?php
 
-/*use Nette::Environment;*/
-/*use Nette::Application::Route;*/
-
 /**
- * Load Nette
+ * My Application bootstrap file.
+ *
+ * @copyright  Copyright (c) 2008 John Doe
+ * @package    MyApplication
+ * @version    $Id$
  */
-define('LIBS_DIR', APP_DIR . '/../libs');
 
-// this should be removed
-if (!is_dir(LIBS_DIR . '/Nette')) {
-	die("Extract Nette Framework to library directory '" . realpath(LIBS_DIR) . "'.");
-}
 
+/*use Nette\Environment;*/
+/*use Nette\Application\Route;*/
+
+
+
+// Step 1: Load Nette Framework
+// this allows load Nette Framework classes automatically so that
+// you don't have to litter your code with 'require' statements
 require_once LIBS_DIR . '/Nette/loader.php';
+//require_once dirname(__FILE__) . '/../../../Nette/loader.php';
 
 
 
-/**
- * Setup Nette::Debug
- */
-/*Nette::*/Debug::enable();
+// Step 2: Configure and setup application environment
+// 2a) enable Nette\Debug for better exception and error visualisation
+Debug::enable();
 
+// 2b) load configuration from config.ini file
+Environment::loadConfig();
 
-
-/**
- * Configure application
- */
-$config = Environment::loadConfig();
-
-
-
-/**
- * Enable RobotLoader
- */
-$loader = new /*Nette::Loaders::*/RobotLoader();
-$loader->addDirectory(explode(';', $config->scanDirs));
+// 2c) enable RobotLoader - this allows load all classes automatically
+$loader = new /*Nette\Loaders\*/RobotLoader();
+$loader->addDirectory(APP_DIR);
+$loader->addDirectory(LIBS_DIR);
 $loader->register();
 
+// 2d) setup sessions
+$session = Environment::getSession();
+$session->setSavePath(APP_DIR . '/sessions/');
 
 
-/**
- * Setup router
- */
+
+// Step 3: Get the front controller
 $application = Environment::getApplication();
+// 2b) setup front controller
 $application->errorPresenter = 'Error';
+//$application->catchExceptions = TRUE;
 
+
+
+// Step 4: Setup application routes
 $router = $application->getRouter();
 
 $router[] = new Route('index.php', array(
@@ -61,7 +65,5 @@ $router[] = new Route('<presenter>/<view>/<id>', array(
 
 
 
-/**
- * Run!
- */
+// Step 5: Run the application!
 $application->run();

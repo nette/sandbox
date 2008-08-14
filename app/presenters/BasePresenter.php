@@ -2,22 +2,31 @@
 
 /**
  * My Application
+ *
+ * @copyright  Copyright (c) 2008 John Doe
+ * @package    MyApplication
+ * @version    $Id$
  */
 
 
 
 /**
  * Base class for all application presenters.
+ *
+ * @author     John Doe
+ * @package    MyApplication
  */
-abstract class BasePresenter extends /*Nette::Application::*/Presenter
+abstract class BasePresenter extends /*Nette\Application\*/Presenter
 {
 
 	/**
-	 * @return void
+	 * @return /*Nette\Templates\*/ITemplate
 	 */
-	protected function beforeRender()
+	protected function createTemplate()
 	{
-		$this->template->registerFilter(/*Nette::Application::*/'TemplateFilters::curlyBrackets');
+		$template = parent::createTemplate();
+		$template->registerFilter(/*Nette\Templates\*/'CurlyBracketsFilter::invoke');
+		return $template;
 	}
 
 }

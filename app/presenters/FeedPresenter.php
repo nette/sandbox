@@ -11,17 +11,21 @@
 
 
 /**
- * Homepage presenter.
+ * Feed channel presenter.
  *
  * @author     John Doe
  * @package    MyApplication
  */
-class HomepagePresenter extends BasePresenter
+class FeedPresenter extends BasePresenter
 {
 
-	public function renderDefault()
+	/**
+	 * @return void
+	 */
+	protected function startup()
 	{
-		$this->template->title = 'It works!';
+		// disables layout
+		$this->changeLayout(FALSE);
 	}
 
 }
