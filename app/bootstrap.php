@@ -22,44 +22,49 @@ require_once LIBS_DIR . '/Nette/loader.php';
 
 
 
-// Step 2: Configure and setup application environment
+// Step 2: Configure environment
 // 2a) enable Nette\Debug for better exception and error visualisation
 Debug::enable();
 
 // 2b) load configuration from config.ini file
 Environment::loadConfig();
 
-// 2c) enable RobotLoader - this allows load all classes automatically
+// 2c) check if directory /app/temp is writable
+if (@file_put_contents(Environment::expand('%tempDir%/_check'), '') === FALSE) {
+	throw new Exception("Make directory '" . Environment::getVariable('tempDir') . "' writable!");
+}
+
+// 2d) enable RobotLoader - this allows load all classes automatically
 $loader = new /*Nette\Loaders\*/RobotLoader();
 $loader->addDirectory(APP_DIR);
 $loader->addDirectory(LIBS_DIR);
 $loader->register();
 
-// 2d) setup sessions
+// 2e) setup sessions
 $session = Environment::getSession();
 $session->setSavePath(APP_DIR . '/sessions/');
 
 
 
-// Step 3: Get the front controller
+// Step 3: Configure application
+// 3a) get and setup a front controller
 $application = Environment::getApplication();
-// 2b) setup front controller
 $application->errorPresenter = 'Error';
 //$application->catchExceptions = TRUE;
 
 
 
-// Step 4: Setup application routes
+// Step 4: Setup application router
 $router = $application->getRouter();
 
 $router[] = new Route('index.php', array(
 	'presenter' => 'Homepage',
-	'view' => 'default',
+	'action' => 'default',
 ), Route::ONE_WAY);
 
-$router[] = new Route('<presenter>/<view>/<id>', array(
+$router[] = new Route('<presenter>/<action>/<id>', array(
 	'presenter' => 'Homepage',
-	'view' => 'default',
+	'action' => 'default',
 	'id' => NULL,
 ));
 
