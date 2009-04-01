@@ -9,16 +9,19 @@
  */
 
 
+/*use Nette\Debug;*/
 /*use Nette\Environment;*/
 /*use Nette\Application\Route;*/
+/*use Nette\Application\SimpleRouter;*/
+/*use Nette\Loaders\RobotLoader;*/
 
 
 
 // Step 1: Load Nette Framework
 // this allows load Nette Framework classes automatically so that
 // you don't have to litter your code with 'require' statements
-require_once LIBS_DIR . '/Nette/loader.php';
-//require_once dirname(__FILE__) . '/../../../Nette/loader.php';
+require LIBS_DIR . '/Nette/loader.php';
+//require dirname(__FILE__) . '/../../../Nette/loader.php';
 
 
 
@@ -35,7 +38,7 @@ if (@file_put_contents(Environment::expand('%tempDir%/_check'), '') === FALSE) {
 }
 
 // 2d) enable RobotLoader - this allows load all classes automatically
-$loader = new /*Nette\Loaders\*/RobotLoader();
+$loader = new RobotLoader();
 $loader->addDirectory(APP_DIR);
 $loader->addDirectory(LIBS_DIR);
 $loader->register();
