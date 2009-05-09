@@ -6,7 +6,6 @@
  * @version    $Id$
  *
  * @param string   $title    feed title
- * @param string   $link     backlink
  * @param string   $description
  * @param array    $heads
  * @param array    $items
@@ -17,12 +16,8 @@
 <rss version="2.0">
 	<channel>
 		<title>{$title}</title>
-		<link>{$link}</link>
+		<link>{link //Homepage:}</link>
 		<description>{$description}</description>
-
-		{foreach $heads as $key => $value}
-		<{!$key}>{$value}</{!$key}>
-		{/foreach}
 
 		{foreach $items as $item}
 		<item>
