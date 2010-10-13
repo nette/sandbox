@@ -12,20 +12,20 @@ use Nette\Application\AppForm,
 
 
 /**
- * Login / logout presenters.
+ * Sign in/out presenters.
  *
  * @author     John Doe
  * @package    MyApplication
  */
-class LoginPresenter extends BasePresenter
+class SignPresenter extends BasePresenter
 {
 
 
 	/**
-	 * Login form component factory.
+	 * Sign in form component factory.
 	 * @return Nette\Application\AppForm
 	 */
-	protected function createComponentLoginForm()
+	protected function createComponentSignInForm()
 	{
 		$form = new AppForm;
 		$form->addText('username', 'Username:')
@@ -36,15 +36,15 @@ class LoginPresenter extends BasePresenter
 
 		$form->addCheckbox('remember', 'Remember me on this computer');
 
-		$form->addSubmit('login', 'Login');
+		$form->addSubmit('send', 'Sign in');
 
-		$form->onSubmit[] = callback($this, 'loginFormSubmitted');
+		$form->onSubmit[] = callback($this, 'signInFormSubmitted');
 		return $form;
 	}
 
 
 
-	public function loginFormSubmitted($form)
+	public function signInFormSubmitted($form)
 	{
 		try {
 			$values = $form->getValues();
@@ -59,6 +59,15 @@ class LoginPresenter extends BasePresenter
 		} catch (AuthenticationException $e) {
 			$form->addError($e->getMessage());
 		}
+	}
+
+
+
+	public function actionOut()
+	{
+		$this->getUser()->logout();
+		$this->flashMessage('You have been signed out.');
+		$this->redirect('in');
 	}
 
 }
