@@ -23,7 +23,7 @@ class LoginPresenter extends BasePresenter
 
 	/**
 	 * Login form component factory.
-	 * @return mixed
+	 * @return AppForm
 	 */
 	protected function createComponentLoginForm()
 	{
@@ -47,7 +47,7 @@ class LoginPresenter extends BasePresenter
 	public function loginFormSubmitted($form)
 	{
 		try {
-			$values = $form->values;
+			$values = $form->getValues();
 			if ($values['remember']) {
 				$this->getUser()->setExpiration('+ 14 days', FALSE);
 			} else {

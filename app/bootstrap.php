@@ -11,7 +11,6 @@
 use Nette\Debug;
 use Nette\Environment;
 use Nette\Application\Route;
-use Nette\Application\SimpleRouter;
 
 
 // Step 1: Load Nette Framework
