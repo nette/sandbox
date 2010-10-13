@@ -7,8 +7,6 @@
  * @package    MyApplication
  */
 
-use Nette\Application\Presenter;
-
 
 /**
  * Base class for all application presenters.
@@ -16,7 +14,7 @@ use Nette\Application\Presenter;
  * @author     John Doe
  * @package    MyApplication
  */
-abstract class BasePresenter extends Presenter
+abstract class BasePresenter extends Nette\Application\Presenter
 {
 
 }
