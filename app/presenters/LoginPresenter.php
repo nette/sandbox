@@ -7,8 +7,7 @@
  * @package    MyApplication
  */
 
-use Nette\Application\AppForm,
-	Nette\Security\AuthenticationException;
+use Nette\Application\AppForm;
 
 
 /**
@@ -56,7 +55,7 @@ class LoginPresenter extends BasePresenter
 			$this->getUser()->login($values['username'], $values['password']);
 			$this->redirect('Homepage:');
 
-		} catch (AuthenticationException $e) {
+		} catch (Nette\Security\AuthenticationException $e) {
 			$form->addError($e->getMessage());
 		}
 	}

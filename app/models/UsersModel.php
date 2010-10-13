@@ -7,7 +7,6 @@
  * @package    MyApplication
  */
 
-use Nette\Object;
 use Nette\Security\AuthenticationException;
 
 
@@ -17,13 +16,13 @@ use Nette\Security\AuthenticationException;
  * @author     John Doe
  * @package    MyApplication
  */
-class UsersModel extends Object implements Nette\Security\IAuthenticator
+class UsersModel extends Nette\Object implements Nette\Security\IAuthenticator
 {
 
 	/**
 	 * Performs an authentication
 	 * @param  array
-	 * @return IIdentity
+	 * @return Nette\Security\Identity
 	 * @throws AuthenticationException
 	 */
 	public function authenticate(array $credentials)
