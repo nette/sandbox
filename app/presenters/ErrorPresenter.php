@@ -33,10 +33,10 @@ class ErrorPresenter extends BasePresenter
 
 		} elseif ($exception instanceof BadRequestException) {
 			$code = $exception->getCode();
-			$this->setView(in_array($code, array(403, 404, 405, 410, 500)) ? $code : '4xx'); // load template 403.phtml or 404.phtml or ... 4xx.phtml
+			$this->setView(in_array($code, array(403, 404, 405, 410, 500)) ? $code : '4xx'); // load template 403.latte or 404.latte or ... 4xx.latte
 
 		} else {
-			$this->setView('500'); // load template 500.phtml
+			$this->setView('500'); // load template 500.latte
 			Debug::log($exception, Debug::ERROR); // and log exception
 		}
 	}
