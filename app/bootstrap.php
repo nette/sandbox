@@ -41,16 +41,9 @@ $application->errorPresenter = 'Error';
 // Step 4: Setup application router
 $router = $application->getRouter();
 
-$router[] = new Route('index.php', array(
-	'presenter' => 'Homepage',
-	'action' => 'default',
-), Route::ONE_WAY);
+$router[] = new Route('index.php', 'Homepage:default', Route::ONE_WAY);
 
-$router[] = new Route('<presenter>/<action>/<id>', array(
-	'presenter' => 'Homepage',
-	'action' => 'default',
-	'id' => NULL,
-));
+$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
 
 
 
