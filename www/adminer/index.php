@@ -74,7 +74,7 @@ if(divs[i].parentNode!=div2.parentNode){line=line.getElementsByTagName('div')[0]
 lineSet[id]=true;}}}
 that.style.left=left+'em';that.style.top=top+'em';}}
 function schemaMouseup(ev){if(that!==undefined){ev=ev||event;tablePos[that.firstChild.firstChild.firstChild.data]=[(ev.clientY-y)/em,(ev.clientX-x)/em];that=undefined;var s='';for(var key in tablePos){s+='_'+key+':'+Math.round(tablePos[key][0]*10000)/10000+'x'+Math.round(tablePos[key][1]*10000)/10000;}
-cookie('adminer_schema='+encodeURIComponent(s.substr(1)),30,'; path="'+location.pathname+'"');}}<?php
+cookie('adminer_schema='+encodeURIComponent(s.substr(1)),30,'; path="'+location.pathname+location.search+'"');}}<?php
 }else{header("Content-Type: image/gif");switch($_GET["file"]){case"plus.gif":echo
 base64_decode("R0lGODdhEgASAKEAAO7u7gAAAJmZmQAAACwAAAAAEgASAAACIYSPqcvtD00I8cwqKb5v+q8pIAhxlRmhZYi17iPE8kzLBQA7");break;case"cross.gif":echo
 base64_decode("R0lGODdhEgASAKEAAO7u7gAAAJmZmQAAACwAAAAAEgASAAACI4SPqcvtDyMKYdZGb355wy6BX3dhlOEx57FK7gtHwkzXNl0AADs=");break;case"up.gif":echo
