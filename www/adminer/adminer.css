@@ -14,13 +14,13 @@ body {
 a, a:visited {
 	padding: 1px 2px;
 	border-bottom: 1px dotted;
-	color: #3484D2;
+	color: #06C;
 	text-decoration: none;
 }
 
 a:hover {
-	background-color: #3484D2 !important;
-	border-bottom: 1px solid #3484D2;
+	background-color: #06C !important;
+	border-bottom: 1px solid #06C;
 	color: #FFF;
 }
 
@@ -79,6 +79,10 @@ input, select, textarea {
 	padding: 3px;
 }
 
+textarea {
+	font-family: Consolas,monospace;
+}
+
 input[type=submit] {
 	background: #ccc;
 	color: #333;
@@ -114,7 +118,7 @@ optgroup {
 
 code {
 	background: #EEE;
-	font: 16px/20px Courier,monospace;
+	font-family: Consolas,monospace;
 	padding: 2px 4px;
 }
 
@@ -219,8 +223,8 @@ table code {
 }
 
 #menu {
-	background: #F4EBDB;
-	border: 5px solid #E4DED5;
+	background: #EEE;
+	border: 5px solid #CCC;
 	bottom: 20px;
 	left: 20px;
 	margin: 0;
@@ -398,7 +402,7 @@ html/*\*/>/*/*/body #content p a[href*="&select="] {
 
 html/*\*/>/*/*/body #content p a[href*="&page="] {
 	background-image: none;
-	padding-left: 0;
+	padding: .2em .5em;
 }
 
 html/*\*/>/*/*/body #content p a[href*="&edit="] {
@@ -518,4 +522,18 @@ html/*\*/>/*/*/body input[name="logout"] {
 	overflow: hidden;
 	text-indent: 18px;
 	width: 16px;
+}
+
+
+/* paginator */
+.pages {
+	margin: 1em 0;
+	font-size: 90%;
+}
+
+.pages a[href*="&page="] {
+	margin: .2em;
+	padding: .2em .5em;
+	border: 1px solid #9AAFE5;
+	text-decoration: none;
 }
