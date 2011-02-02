@@ -40,3 +40,11 @@ Documentation, Examples, Sandbox, Tools
 Nette Framework: homepage http://nette.org and repository http://github.com/nette/nette
 Sandbox, pre-packaged and configured project: http://github.com/nette/sandbox
 Examples repository: http://github.com/nette/examples
+
+
+License
+-------
+
+This skeleton is part of the Nette Framework (http://nette.org). For the full
+copyright and license information, please view the file license.txt.
+For "Adminer" copyright and license information, please view it's source code.
