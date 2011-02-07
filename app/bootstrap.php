@@ -25,7 +25,7 @@ require LIBS_DIR . '/Nette/loader.php';
 Debug::$strictMode = TRUE;
 Debug::enable();
 
-// 2b) load configuration from config.ini file
+// 2b) load configuration from config.neon file
 Environment::loadConfig();
 
 

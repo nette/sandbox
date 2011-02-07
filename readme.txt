@@ -28,7 +28,7 @@ Installing
 
 Make directories 'sandbox/temp' and 'sandbox/log' writable.
 
-It is CRITICAL that file 'sandbox/app/config.ini' & whole 'sandbox/app', 'sandbox/log'
+It is CRITICAL that file 'sandbox/app/config.neon' & whole 'sandbox/app', 'sandbox/log'
 and 'sandbox/temp' directory are NOT accessible directly via a web browser! If you
 don't protect this directory from direct web access, anybody will be able to see
 your sensitive data. See: http://nette.org/security-warning
