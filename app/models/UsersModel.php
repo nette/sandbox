@@ -7,7 +7,7 @@
  * @package    MyApplication
  */
 
-use Nette\Security\AuthenticationException;
+use Nette\Security as NS;
 
 
 /**
@@ -16,14 +16,14 @@ use Nette\Security\AuthenticationException;
  * @author     John Doe
  * @package    MyApplication
  */
-class UsersModel extends Nette\Object implements Nette\Security\IAuthenticator
+class UsersModel extends Nette\Object implements NS\IAuthenticator
 {
 
 	/**
 	 * Performs an authentication
 	 * @param  array
 	 * @return Nette\Security\Identity
-	 * @throws AuthenticationException
+	 * @throws Nette\Security\AuthenticationException
 	 */
 	public function authenticate(array $credentials)
 	{
@@ -31,15 +31,15 @@ class UsersModel extends Nette\Object implements Nette\Security\IAuthenticator
 		$row = dibi::fetch('SELECT * FROM users WHERE login=%s', $username);
 
 		if (!$row) {
-			throw new AuthenticationException("User '$username' not found.", self::IDENTITY_NOT_FOUND);
+			throw new NS\AuthenticationException("User '$username' not found.", self::IDENTITY_NOT_FOUND);
 		}
 
 		if ($row->password !== $this->calculateHash($password)) {
-			throw new AuthenticationException("Invalid password.", self::INVALID_CREDENTIAL);
+			throw new NS\AuthenticationException("Invalid password.", self::INVALID_CREDENTIAL);
 		}
 
 		unset($row->password);
-		return new Nette\Security\Identity($row->id, $row->role, $row);
+		return new NS\Identity($row->id, $row->role, $row);
 	}
 
 

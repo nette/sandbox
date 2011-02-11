@@ -7,9 +7,9 @@
 common:
 	php: # PHP configuration
 		date.timezone: Europe/Prague
-		# php.session.save_path = "%tempDir%/sessions"
-		# php.zlib.output_compression = yes
-		# php.default_charset = "UTF-8"
+		# session.save_path: "%tempDir%/sessions"
+		# zlib.output_compression: yes
+		# default_charset: "UTF-8"
 
 	service:
 		Nette\Security\IAuthenticator: UsersModel
@@ -21,3 +21,5 @@ common:
 production < common:
 
 development < common:
+
+console < common:

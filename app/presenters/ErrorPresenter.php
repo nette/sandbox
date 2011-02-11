@@ -8,7 +8,7 @@
  */
 
 use Nette\Debug,
-	Nette\Application\BadRequestException;
+	Nette\Application as NA;
 
 
 
@@ -31,7 +31,7 @@ class ErrorPresenter extends BasePresenter
 			$this->payload->error = TRUE;
 			$this->terminate();
 
-		} elseif ($exception instanceof BadRequestException) {
+		} elseif ($exception instanceof NA\BadRequestException) {
 			$code = $exception->getCode();
 			$this->setView(in_array($code, array(403, 404, 405, 410, 500)) ? $code : '4xx'); // load template 403.latte or 404.latte or ... 4xx.latte
 

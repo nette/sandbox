@@ -7,8 +7,8 @@
  * @package    MyApplication
  */
 
-use Nette\Application\AppForm,
-	Nette\Security\AuthenticationException;
+use Nette\Application as NA,
+	Nette\Security as NS;
 
 
 /**
@@ -27,12 +27,12 @@ class SignPresenter extends BasePresenter
 	 */
 	protected function createComponentSignInForm()
 	{
-		$form = new AppForm;
+		$form = new NA\AppForm;
 		$form->addText('username', 'Username:')
-			->addRule(AppForm::FILLED, 'Please provide a username.');
+			->setRequired('Please provide a username.');
 
 		$form->addPassword('password', 'Password:')
-			->addRule(AppForm::FILLED, 'Please provide a password.');
+			->setRequired('Please provide a password.');
 
 		$form->addCheckbox('remember', 'Remember me on this computer');
 
@@ -56,7 +56,7 @@ class SignPresenter extends BasePresenter
 			$this->getUser()->login($values['username'], $values['password']);
 			$this->redirect('Homepage:');
 
-		} catch (AuthenticationException $e) {
+		} catch (NS\AuthenticationException $e) {
 			$form->addError($e->getMessage());
 		}
 	}
