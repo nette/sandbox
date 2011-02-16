@@ -5,6 +5,11 @@
  */
 
 
+use Nette\Debug;
+use Nette\Environment;
+use Nette\Application\Route;
+
+
 // Load Nette Framework
 // this allows load Nette Framework classes automatically so that
 // you don't have to litter your code with 'require' statements
@@ -16,16 +21,14 @@ Debug::$strictMode = TRUE;
 Debug::enable();
 
 
+// Load configuration from config.neon file
+Environment::loadConfig();
+
+
 // Configure application
 $application = Environment::getApplication();
 $application->errorPresenter = 'Error';
 //$application->catchExceptions = TRUE;
-
-
-// Load configuration from config.neon file
-$application->onStartup[] = function() {
-	Environment::loadConfig();
-};
 
 
 // Setup router
