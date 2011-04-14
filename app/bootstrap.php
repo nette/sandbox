@@ -5,9 +5,9 @@
  */
 
 
-use Nette\Debug;
+use Nette\Diagnostics\Debugger;
 use Nette\Environment;
-use Nette\Application\Route;
+use Nette\Application\Routers\Route;
 
 
 // Load Nette Framework
@@ -17,8 +17,8 @@ require LIBS_DIR . '/Nette/loader.php';
 
 
 // Enable Nette\Debug for error visualisation & logging
-Debug::$strictMode = TRUE;
-Debug::enable();
+Debugger::$strictMode = TRUE;
+Debugger::enable();
 
 
 // Load configuration from config.neon file
