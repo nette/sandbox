@@ -241,6 +241,10 @@ table code {
 	margin-right: 4px;
 }
 
+#menu p a {
+	display: block;
+}
+
 #menu a:hover {
 	color: #FFF;
 }
