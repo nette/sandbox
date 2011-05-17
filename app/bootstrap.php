@@ -5,9 +5,9 @@
  */
 
 
-use Nette\Diagnostics\Debugger;
-use Nette\Environment;
-use Nette\Application\Routers\Route;
+use Nette\Diagnostics\Debugger,
+	Nette\Application\Routers\SimpleRouter,
+	Nette\Application\Routers\Route;
 
 
 // Load Nette Framework
@@ -22,11 +22,12 @@ Debugger::enable();
 
 
 // Load configuration from config.neon file
-Environment::loadConfig(__DIR__ . '/config.neon');
+$configurator = new Nette\Configurator;
+$configurator->loadConfig(__DIR__ . '/config.neon');
 
 
 // Configure application
-$application = Environment::getApplication();
+$application = $configurator->container->application;
 $application->errorPresenter = 'Error';
 //$application->catchExceptions = TRUE;
 
