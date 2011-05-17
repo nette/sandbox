@@ -11,11 +11,11 @@ common:
 		# zlib.output_compression: yes
 		# default_charset: "UTF-8"
 
-	service:
-		Nette\Security\IAuthenticator: UsersModel
-		Nette\Loaders\RobotLoader:
-			option:
-				directory: [%appDir%, %libsDir%]
+	services:
+		authenticator: 
+			class: UsersModel
+			
+		robotLoader:
 			run: true
 
 production < common:
