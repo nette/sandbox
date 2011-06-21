@@ -1,12 +1,5 @@
 <?php
 
-/**
- * My Application
- *
- * @copyright  Copyright (c) 2010 John Doe
- * @package    MyApplication
- */
-
 use Nette\Application\UI,
 	Nette\Security as NS;
 

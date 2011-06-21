@@ -20,10 +20,10 @@ common:
 
 		model:
 			class: Model
-			arguments: ["@database"]
+			arguments: [@database]
 			
 		authenticator: 
-			factory: ["@model", createAuthenticatorService]
+			factory: [@model, createAuthenticatorService]
 		
 
 production < common:
