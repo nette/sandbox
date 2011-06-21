@@ -75,8 +75,9 @@ input, select, textarea {
 	padding: 3px;
 }
 
-textarea {
+textarea, .sqlarea {
 	font-family: Consolas,monospace;
+	height: 500px;
 }
 
 input[type=submit] {
@@ -196,6 +197,8 @@ table code {
 	background: white;
 	position: absolute;
 	z-index: 1;
+	left: 0;
+	right: 0;
 }
 
 #content:after {
