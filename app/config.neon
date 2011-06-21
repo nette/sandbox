@@ -9,14 +9,22 @@ common:
 		date.timezone: Europe/Prague
 		# session.save_path: "%tempDir%/sessions"
 		# zlib.output_compression: yes
-		# default_charset: "UTF-8"
 
 	services:
-		authenticator: 
-			class: UsersModel
-			
 		robotLoader:
 			run: true
+
+		database:
+			class: Nette\Database\Connection
+			arguments: ['mysql:host=localhost;dbname=test', 'user', 'password']
+
+		model:
+			class: Model
+			arguments: ["@database"]
+			
+		authenticator: 
+			factory: ["@model", createAuthenticatorService]
+		
 
 production < common:
 

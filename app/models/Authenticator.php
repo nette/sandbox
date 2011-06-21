@@ -1,12 +1,5 @@
 <?php
 
-/**
- * My Application
- *
- * @copyright  Copyright (c) 2010 John Doe
- * @package    MyApplication
- */
-
 use Nette\Security as NS;
 
 
@@ -16,8 +9,19 @@ use Nette\Security as NS;
  * @author     John Doe
  * @package    MyApplication
  */
-class UsersModel extends Nette\Object implements NS\IAuthenticator
+class Authenticator extends Nette\Object implements NS\IAuthenticator
 {
+	/** @var Nette\Database\Table\Selection */
+	private $users;
+
+
+
+	public function __construct(Nette\Database\Table\Selection $users)
+	{
+		$this->users = $users;
+	}
+
+
 
 	/**
 	 * Performs an authentication
@@ -28,7 +32,7 @@ class UsersModel extends Nette\Object implements NS\IAuthenticator
 	public function authenticate(array $credentials)
 	{
 		list($username, $password) = $credentials;
-		$row = dibi::fetch('SELECT * FROM users WHERE login=%s', $username);
+		$row = $this->users->where('username', $username)->fetch();
 
 		if (!$row) {
 			throw new NS\AuthenticationException("User '$username' not found.", self::IDENTITY_NOT_FOUND);
@@ -39,7 +43,7 @@ class UsersModel extends Nette\Object implements NS\IAuthenticator
 		}
 
 		unset($row->password);
-		return new NS\Identity($row->id, $row->role, $row);
+		return new NS\Identity($row->id, $row->role, $row->toArray());
 	}
 
 
