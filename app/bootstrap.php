@@ -9,16 +9,20 @@ use Nette\Diagnostics\Debugger,
 
 
 // Load Nette Framework
-require LIBS_DIR . '/Nette/loader.php';
+$params['libsDir'] = __DIR__ . '/../libs';
+require $params['libsDir'] . '/Nette/loader.php';
 
 
-// Enable Nette\Debug for error visualisation & logging
+// Enable Nette Debugger for error visualisation & logging
+Debugger::$logDirectory = __DIR__ . '/../log';
 Debugger::$strictMode = TRUE;
 Debugger::enable();
 
 
 // Load configuration from config.neon file
 $configurator = new Nette\Configurator;
+$configurator->container->params += $params;
+$configurator->container->params['tempDir'] = __DIR__ . '/../temp';
 $container = $configurator->loadConfig(__DIR__ . '/config.neon');
 
 
