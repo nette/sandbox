@@ -3,6 +3,8 @@
 // uncomment this line if you must temporarily take down your site for maintenance
 // require '.maintenance.php';
 
+$params = array();
+
 // absolute filesystem path to this web root
 $params['wwwDir'] = __DIR__;
 
