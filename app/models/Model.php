@@ -18,6 +18,7 @@ class Model extends Nette\Object
 
 
 
+	/** @return Authenticator */
 	public function createAuthenticatorService()
 	{
 		return new Authenticator($this->database->table('users'));
