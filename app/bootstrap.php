@@ -3,14 +3,12 @@
 /**
  * My Application bootstrap file.
  */
-
 use Nette\Diagnostics\Debugger,
 	Nette\Application\Routers\Route;
 
 
 // Load Nette Framework
-$params['libsDir'] = __DIR__ . '/../libs';
-require $params['libsDir'] . '/Nette/loader.php';
+require LIBS_DIR . '/Nette/loader.php';
 
 
 // Enable Nette Debugger for error visualisation & logging
@@ -19,10 +17,11 @@ Debugger::$strictMode = TRUE;
 Debugger::enable();
 
 
-// Load configuration from config.neon file
+// Configure application
 $configurator = new Nette\Configurator;
-$configurator->container->params += $params;
 $configurator->container->params['tempDir'] = __DIR__ . '/../temp';
+
+// Create Dependency Injection container from config.neon file
 $container = $configurator->loadConfig(__DIR__ . '/config.neon');
 
 
