@@ -30,6 +30,10 @@ $configurator->createRobotLoader()
 // Create Dependency Injection container from config.neon file
 $container = $configurator->loadConfig(__DIR__ . '/config.neon');
 
+// Opens already started session
+if ($container->session->exists()) {
+	$container->session->start();
+}
 
 // Setup router
 $router = $container->router;
