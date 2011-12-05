@@ -5,6 +5,15 @@
 # http://nette.org/security-warning
 #
 common:
+	parameters:
+		database:
+			driver: mysql
+			host: localhost
+			dbname: test
+			user:
+			password:
+
+
 	php: # PHP configuration
 		date.timezone: Europe/Prague
 		# session.save_path: "%tempDir%/sessions"
@@ -13,15 +22,15 @@ common:
 	services:
 		database:
 			class: Nette\Database\Connection
-			arguments: ['mysql:host=localhost;dbname=test', 'user', 'password']
+			arguments: ['%database.driver%:host=%database.host%;dbname=%database.dbname%', %database.user%, %database.password%, ..., Nette\Database\Reflection\DiscoveredReflection()]
+			setup:
+				- setCacheStorage()
 
 		model:
 			class: Model
-			arguments: [@database]
 
 		authenticator:
-			factory: [@model, createAuthenticatorService]
-
+			factory: @model::createAuthenticatorService
 
 production < common:
 

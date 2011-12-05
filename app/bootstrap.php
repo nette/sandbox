@@ -28,7 +28,7 @@ $configurator->createRobotLoader()
 	->register();
 
 // Create Dependency Injection container from config.neon file
-$container = $configurator->loadConfig(__DIR__ . '/config.neon');
+$container = $configurator->loadConfig(__DIR__ . '/config/config.neon');
 
 // Opens already started session
 if ($container->session->exists()) {
