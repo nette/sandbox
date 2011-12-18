@@ -26,11 +26,8 @@ common:
 			setup:
 				- setCacheStorage()
 
-		model:
-			class: Model
+		authenticator: Authenticator(@database::table(users))
 
-		authenticator:
-			factory: @model::createAuthenticatorService
 
 production < common:
 
