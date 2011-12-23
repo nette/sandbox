@@ -14,23 +14,29 @@ common:
 			password:
 
 
-	php: # PHP configuration
+	php:
 		date.timezone: Europe/Prague
 		# session.save_path: "%tempDir%/sessions"
 		# zlib.output_compression: yes
 
+
 	services:
 		database:
-			class: Nette\Database\Connection
-			arguments: ['%database.driver%:host=%database.host%;dbname=%database.dbname%', %database.user%, %database.password%, ..., Nette\Database\Reflection\DiscoveredReflection()]
+			class: Nette\Database\Connection(
+				'%database.driver%:host=%database.host%;dbname=%database.dbname%'
+				%database.user%
+				%database.password%
+			)
 			setup:
-				- setCacheStorage()
+				- setCacheStorage(...)
+				#- setDatabaseReflection( Nette\Database\Reflection\DiscoveredReflection() )
 
-		authenticator: Authenticator(@database::table(users))
+		authenticator: Authenticator( @database::table(users) )
+
+
+	factories:
 
 
 production < common:
 
 development < common:
-
-console < common:
