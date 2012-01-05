@@ -1,138 +1,120 @@
-{* This is temporary page, you can delete it *}
+{* This is the welcome page, you can delete it *}
 
 {block content}
-<div id="wrapper">
-	<div id="logo"></div>
-
+<div id="banner">
 	<h1>Congratulations!</h1>
+</div>
 
+<div id="content">
 	<h2>You have successfully created your Nette Framework project.</h2>
 
-	<hr>
+	<div class="box">
+		<h2><img src="http://files.nette.org/sandbox/sourcecode.png" alt="">Explore source codes</h2>
+		<p>See source code of <a href="#template">this page template</a>, <a href="#layout">layout template</a> and
+		<a href="#presenter">corresponding presenter</a>. And feel free to modify them!</p>
+	</div>
 
-	<h2>What to do next?</h2>
-
-	<ol>
-		<li><h3>Edit this page</h3>
-		<p>To change the content of this page, modify file <code>/app/templates/Homepage/default.latte</code> and layout
-		<code>/app/templates/@layout.latte</code>. The corresponding  presenter is found at <code>/app/presenters/HomepagePresenter.php</code>.</p>
-
-		<li><h3>Add new pages</h3>
-		<p>Add new actions in <code>HomepagePresenter.php</code> (or create new presenters)
-		and create corresponding templates under <code>/app/templates</code>.<p>
-
-		<li><h3>Manage database tables</h3>
+	<div class="box">
+		<h2><a href="{$basePath}/adminer/"><img src="http://files.nette.org/sandbox/database.png" alt="">Manage database tables</a></h2>
 		<p>Manage your database using pre-installed tool <a href="{$basePath}/adminer/">Adminer</a> with an easy to use GUI.<p>
+	</div>
 
-		<li><h3>Learn more from the documentation</h3>
-		<p>If you are exploring Nette Framework for the very first time, you should start by reading the
-		<a href="http://doc.nette.org">documentation</a>, <a href="http://pla.nette.org">tutorials</a> and <a href="http://forum.nette.org">forum</a>.</p>
-	</ol>
+	<div class="box">
+		<h2><a href="http://doc.nette.org/quickstart"><img src="http://files.nette.org/sandbox/book.png" alt="">Read<br>Quick-start tutorial</a></h2>
+		<p>If you are exploring Nette Framework for the first time, you should read the
+		<a href="http://doc.nette.org/quickstart">Quick Start</a>, <a href="http://doc.nette.org">documentation</a>,
+		<a href="http://pla.nette.org">tutorials</a> and <a href="http://forum.nette.org">forum</a>.</p>
+	</div>
 
-	<h2>We hope you enjoy this framework! <img src="{$basePath}/images/nette-powered2.gif" width="80" height="15" alt="Nette Framework powered"></h2>
+	<h2>We hope you enjoy this framework!</h2>
 
-	<ul id="environment">
-		<li>PHP {=PHP_VERSION}</li>
-		<li n:ifset="$_SERVER['SERVER_SOFTWARE']">Server {$_SERVER['SERVER_SOFTWARE']}</li>
-		<li>Nette Framework {=Nette\Framework::VERSION}</li>
-	</ul>
+	<section id="template">
+		<h2>This page template located at <span>{strstr($presenter->template->getFile(), app)}</span></h2>
+
+		<pre><code class="jush">{file_get_contents($presenter->template->getFile())}</code></pre>
+	</section>
+
+	<section id="layout">
+		<h2>Layout template located at <span>{strstr($template->layout, app)}</span></h2>
+
+		<pre><code class="jush">{file_get_contents($template->layout)}</code></pre>
+	</section>
+
+	<section id="presenter">
+		<h2>Current presenter located at <span>{strstr($presenter->reflection->fileName, app)}</span></h2>
+
+		<pre><code class="jush-php">{file_get_contents($presenter->reflection->fileName)}</code></pre>
+	</section>
+
+	<footer>PHP {=PHP_VERSION} |
+		{ifset $_SERVER['SERVER_SOFTWARE']}Server {$_SERVER['SERVER_SOFTWARE']}{/ifset} |
+		Nette Framework {=Nette\Framework::VERSION}</footer>
 </div>
+
+<script src="http://jush.sourceforge.net/jush.js"></script>
+<script>
+	jush.create_links = false;
+	jush.highlight_tag('code');
+	$('code.jush').each(function(){ $(this).html($(this).html().replace(/\x7B[/$\w].*?\}/g, '<span class="jush-latte">$&</span>')) });
+
+	$('a[href^=#]').click(function(){
+		$('html,body').animate({ scrollTop: $($(this).attr('href')).show().offset().top - 5 }, 'fast');
+		return false;
+	});
+</script>
 {/block}
 
 
 {block head}
 <style>
-	html {
-		font: 16px/1.5 sans-serif;
-		border-top: 8.7em solid #F4EBDB;
-	}
+html { overflow-y: scroll; }
+body { font: 14px/1.65 Verdana, "Geneva CE", lucida, sans-serif; background: #3484d2; color: #333; margin: 38px auto; max-width: 940px; min-width: 770px; }
 
-	body {
-		font: inherit;
-		border-top: 5px solid #E4DED5;
-		margin: 0;
-		background: white;
-		color: #333;
-	}
+h1, h2 { font: normal 150%/1.3 Georgia, "New York CE", utopia, serif; color: #1e5eb6; -webkit-text-stroke: 1px rgba(0,0,0,0); }
 
-	#wrapper {
-		max-width: 670px;
-		margin: -8.7em auto 0;
-	}
+img { border: none; }
 
-	#logo {
-		position: absolute;
-		width: 150px;
-		height: 8.7em;
-		top: 0;
-		right: 3em;
-		background: url('data:image/gif;base64,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') right center no-repeat;
-	}
+a { color: #006aeb; padding: 3px 1px; }
 
-	h1 {
-		font-size: 47px;
-		color: #3484D2;
-		margin: .4em 0 -.3em;
-		text-shadow: 1px 1px 0 white;
-	}
+a:hover, a:active, a:focus { background-color: #006aeb; text-decoration: none; color: white; }
 
-	h2, h3 {
-		font-size: 18px;
-		color: #7A7772;
-		margin: .6em 0;
-		text-shadow: 1px 1px 0 white;
-	}
+#banner { border-radius: 12px 12px 0 0; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAB5CAMAAADPursXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGBQTFRFD1CRDkqFDTlmDkF1D06NDT1tDTNZDk2KEFWaDTZgDkiCDTtpDT5wDkZ/DTBVEFacEFOWD1KUDTRcDTFWDkV9DkR7DkN4DkByDTVeDC9TDThjDTxrDkeADkuIDTRbDC9SbsUaggAAAEdJREFUeNqkwYURgAAQA7DH3d3335LSKyxAYpf9vWCpnYbf01qcOdFVXc14w4BznNTjkQfsscAdU3b4wIh9fDVYc4zV8xZgAAYaCMI6vPgLAAAAAElFTkSuQmCC); }
+#banner h1 { color: white; font-size: 50px; line-height: 121px; margin: 0; padding-left: 40px; background: url(http://files.nette.org/sandbox/logo.png) no-repeat 95%; text-shadow: 1px 1px 0 rgba(0, 0, 0, .9); }
 
-	h3 {
-		font-size: 16px;
-		color: #3484D2;
-	}
+#content { background: white; border: 1px solid #eff4f7; border-radius: 0 0 12px 12px; padding: 10px 40px; }
+#content > h2 { font-size: 130%; color: #666; clear: both; padding: 1.2em 0; margin: 0; }
 
-	ol {
-		margin: 0;
-		padding: 0;
-	}
+h2 span { color: #87A7D5; }
+h2 a { text-decoration: none; background: transparent; }
 
-	ol li {
-		margin: 1em 0;
-	}
+.box { width: 24%; float: left; background: #f0f0f0; margin-right: 4%; min-height: 230px; padding: 3%; border: 1px solid #e6e6e6; border-radius: 5px; }
+.box h2 { text-align: right; margin: 0; }
+.box img { float: left; }
+.box p { clear: both; }
+.box:nth-child(4n - 2) h2 { color: #00a6e5; }
+.box:nth-child(4n - 2) img { margin: -24px 0 0 -24px; }
+.box:nth-child(4n - 1) h2 a { color: #db8e34; background: transparent; }
+.box:nth-child(4n) { margin: 0; }
+.box:nth-child(4n) h2 a { color: #578404; background: transparent; }
 
-	ol li p {
-		font-size: 90%;
-	}
+body.js section { display: none; }
 
-	code {
-		color: #666;
-	}
+pre { font-size: 12px; line-height: 1.4; padding: 10px; margin: 1.3em 0; overflow: auto; max-height: 500px; background: #F1F5FB; border-radius: 5px; box-shadow: 0 1px 1px rgba(0, 0, 0, .1); }
 
-	hr {
-		visibility: hidden;
-		height: 2em;
-	}
+footer { font-size: 70%; padding: 1em 0; color: gray; }
 
-	img {
-		border: none;
-	}
-
-	a {
-		color: #3484D2;
-		padding: 3px 1px;
-		font-weight: bold;
-	}
-
-	a:hover, a:active, a:focus {
-		background-color: #3484D2;
-		text-decoration: none;
-		color: white;
-	}
-
-	#environment {
-		font-size: 70%;
-		margin: 3em 0;
-		padding: 1em 0;
-		border-top: 1px solid #EEE;
-		list-style: none;
-		color: gray;
-	}
+.jush-com, .jush-php_doc { color: #929292; }
+.jush-tag, .jush-tag_js { color: #6A8527; font-weight: bold; }
+.jush-att { color: #8CA315 }
+.jush-att_quo { color: #448CCB; font-weight: bold; }
+.jush-php_var { color: #d59401; font-weight: bold; }
+.jush-php_apo { color: green; }
+.jush-php_new { font-weight: bold; }
+.jush-php_fun { color: #254DB3; }
+.jush-js, .jush-css { color: #333333; }
+.jush-css_val { color: #448CCB; }
+.jush-clr { color: #007800; }
+.jush a { color: inherit; background: transparent; }
+.jush-latte { color: #D59401; font-weight: bold }
 </style>
 {/block}
