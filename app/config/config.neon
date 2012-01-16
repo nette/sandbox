@@ -20,16 +20,16 @@ common:
 		# zlib.output_compression: yes
 
 
-	services:
+	nette:
 		database:
-			class: Nette\Database\Connection(
-				'%database.driver%:host=%database.host%;dbname=%database.dbname%'
-				%database.user%
-				%database.password%
-			)
-			setup:
-				- setCacheStorage(...)
-				#- setDatabaseReflection( Nette\Database\Reflection\DiscoveredReflection() )
+			default:
+				dsn: '%database.driver%:host=%database.host%;dbname=%database.dbname%'
+				user: %database.user%
+				password: %database.password%
+
+
+	services:
+		database: @Nette\Database\Connection
 
 		authenticator: Authenticator( @database::table(users) )
 
