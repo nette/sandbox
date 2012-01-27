@@ -21,6 +21,9 @@ common:
 
 
 	nette:
+		session:
+			autoStart: smart
+
 		database:
 			default:
 				dsn: '%database.driver%:host=%database.host%;dbname=%database.dbname%'
