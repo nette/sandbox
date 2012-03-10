@@ -21,6 +21,9 @@ common:
 
 
 	nette:
+		session:
+			expiration: '+ 14 days'
+
 		database:
 			default:
 				dsn: '%database.driver%:host=%database.host%;dbname=%database.dbname%'
