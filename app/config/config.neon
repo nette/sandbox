@@ -23,6 +23,7 @@ common:
 	nette:
 		session:
 			autoStart: smart
+			gc_maxlifetime: 1209600
 
 		database:
 			default:
