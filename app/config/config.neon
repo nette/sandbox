@@ -22,7 +22,7 @@ common:
 
 	nette:
 		session:
-			expiration: '+ 7 days'
+			expiration: '+ 14 days'
 
 		database:
 			default:
