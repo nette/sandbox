@@ -1,5 +1,10 @@
 <?php
 
+// set REQUEST_TIME_FLOAT for PHP 5.2 & 5.3
+if (!isset($_SERVER['REQUEST_TIME_FLOAT'])) {
+	$_SERVER['REQUEST_TIME_FLOAT'] = microtime(TRUE);
+}
+
 // absolute filesystem path to this web root
 define('WWW_DIR', __DIR__);
 
