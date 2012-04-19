@@ -11,14 +11,14 @@ use Nette\Security as NS;
  */
 class Authenticator extends Nette\Object implements NS\IAuthenticator
 {
-	/** @var Nette\Database\Table\Selection */
-	private $users;
+	/** @var Nette\Database\Connection */
+	private $database;
 
 
 
-	public function __construct(Nette\Database\Table\Selection $users)
+	public function __construct(Nette\Database\Connection $database)
 	{
-		$this->users = $users;
+		$this->database = $database;
 	}
 
 
@@ -32,7 +32,7 @@ class Authenticator extends Nette\Object implements NS\IAuthenticator
 	public function authenticate(array $credentials)
 	{
 		list($username, $password) = $credentials;
-		$row = $this->users->where('username', $username)->fetch();
+		$row = $this->database->table('users')->where('username', $username)->fetch();
 
 		if (!$row) {
 			throw new NS\AuthenticationException("User '$username' not found.", self::IDENTITY_NOT_FOUND);
@@ -55,7 +55,7 @@ class Authenticator extends Nette\Object implements NS\IAuthenticator
 	 */
 	public function calculateHash($password)
 	{
-		return md5($password . str_repeat('*enter any random salt here*', 10));
+		return md5($password . str_repeat('*random salt*', 10));
 	}
 
 }

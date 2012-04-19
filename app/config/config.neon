@@ -32,9 +32,7 @@ common:
 
 
 	services:
-		database: @Nette\Database\Connection
-
-		authenticator: Authenticator( @database::table(users) )
+		authenticator: Authenticator
 
 
 	factories:
