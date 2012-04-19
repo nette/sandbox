@@ -1,10 +1,7 @@
 <?php
 
 /**
- * Base class for all application presenters.
- *
- * @author     John Doe
- * @package    MyApplication
+ * Base presenter for all application presenters.
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {

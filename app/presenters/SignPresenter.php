@@ -6,9 +6,6 @@ use Nette\Application\UI,
 
 /**
  * Sign in/out presenters.
- *
- * @author     John Doe
- * @package    MyApplication
  */
 class SignPresenter extends BasePresenter
 {
