@@ -6,29 +6,24 @@
 #
 common:
 	parameters:
-		database:
-			driver: mysql
-			host: localhost
-			dbname: test
-			user:
-			password:
-
 
 	php:
 		date.timezone: Europe/Prague
-		# session.save_path: "%tempDir%/sessions"
 		# zlib.output_compression: yes
 
 
 	nette:
+		application:
+			errorPresenter: Error
+
 		session:
-			expiration: '+ 14 days'
+			expiration: 14 days
 
 		database:
 			default:
-				dsn: '%database.driver%:host=%database.host%;dbname=%database.dbname%'
-				user: %database.user%
-				password: %database.password%
+				dsn: 'mysql:host=localhost;dbname=test'
+				user:
+				password:
 
 
 	services:
