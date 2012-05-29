@@ -8,6 +8,9 @@ Options -Indexes
 	RewriteEngine On
 	# RewriteBase /
 
+	# prevents files starting with dot to be viewed by browser
+	RewriteRule /\.|^\. - [F]
+
 	# front controller
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
