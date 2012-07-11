@@ -12,15 +12,14 @@ body {
 
 /* generic */
 a, a:visited {
-	padding: 1px 2px;
-	border-bottom: 1px dotted;
-	color: #06C;
+	padding: 3px 2px;
+	color: #006AEB;
 	text-decoration: none;
 }
 
 a:hover {
-	background-color: #06C !important;
-	border-bottom: 1px solid #06C;
+	background-color: #006AEB !important;
+	border-bottom: 1px solid #006AEB;
 	color: #FFF;
 }
 
@@ -69,10 +68,14 @@ fieldset div {
 }
 
 input, select, textarea {
-	border: 1px solid #999;
+	border: 1px solid #CCC;
 	color: #555;
 	font: 13px Helvetica,Arial,sans-serif;
 	padding: 3px;
+}
+
+select {
+	padding: 2px;
 }
 
 textarea, .sqlarea {
@@ -81,10 +84,15 @@ textarea, .sqlarea {
 }
 
 input[type=submit] {
-	background: #ccc;
-	color: #333;
+	background: #4890E7;
+	color: white;
 	cursor: pointer;
-	padding: 2px;
+	padding: 3px;
+	border: none;
+}
+
+input[type=submit]:hover {
+	background-color: #006AEB;
 }
 
 input[type=image], input[type=checkbox] {
@@ -95,11 +103,6 @@ input[type=image], input[type=checkbox] {
 
 label input[type=checkbox], td input[type=radio], td span select {
 	margin-right: 4px;
-}
-
-select {
-	border: 1px solid #999;
-	padding: 2px;
 }
 
 fieldset select {
@@ -125,17 +128,13 @@ code a:hover {
 }
 
 table {
-	border: 1px solid #CCC;
+	border: 1px solid #D0CDC4;
 	font-size: inherit;
 	margin: 4px 0 8px;
 }
 
 tbody tr:hover td, tbody tr:hover th {
-	background: #EEE;
-}
-
-thead tr:hover td, thead tr:hover th {
-	background: #DDD;
+	background: #EDF4FF;
 }
 
 th, td {
@@ -144,16 +143,29 @@ th, td {
 	border-width:0 0 0 1px;
 	font-weight: normal;
 	margin: 0;
-	padding: 2px 4px;
+	padding: 3px 5px;
 	text-align: left;
 	vertical-align: top;
 }
 
+.odd th, .odd td {
+	background: #FCFAF5;
+}
+
+.js .checked th, .js .checked td {
+	background: #CEE0FC;
+}
+
 thead th, thead td {
-	background: #ddd;
-	border-color: #DDD;
+	background: #F2EEE1;
+	border-color: #D0CDC4;
 	font-weight: bold;
 	white-space: nowrap;
+}
+
+thead tr:hover td, thead tr:hover th,
+.js thead .checked th, .js thead .checked td {
+	background: #F2EEE1;
 }
 
 th:first-child, td:first-child {
@@ -226,19 +238,20 @@ table code {
 }
 
 #lang select {
-	border-color: #333;
+	border: none;
+	background: #5F5F5F;
+	color: white;
 }
 
 #menu {
-	background: #EEE;
-	border: 5px solid #CCC;
-	bottom: 20px;
-	left: 20px;
+	background: #FCFAF5;
+	border-right: 5px solid #E4E2DA;
+	bottom: 0;
 	margin: 0;
 	overflow: auto;
 	padding: 10px 15px;
 	position: fixed;
-	top: 60px;
+	top: 40px;
 	width: 240px;
 }
 
@@ -246,6 +259,10 @@ table code {
 	color: #333;
 	border: none;
 	margin-right: 4px;
+}
+
+#tables a {
+	padding: 1px 2px;
 }
 
 #menu a:hover {
@@ -361,11 +378,6 @@ html/*\*/>/*/*/body #menu p a[href*="&select="]:before {
 }
 
 html/*\*/>/*/*/body #menu p a[href*="&select="]:hover {
-	background: #FFC;
-	border: 1px solid #CCC;
-	color: white;
-	font-size: .9em;
-	line-height: 16px;
 	margin-left: -3px;
 	margin-top: -2px;
 	overflow: visible;
@@ -454,8 +466,7 @@ html/*\*/>/*/*/body table input + a[href*="&edit="][href*="&where"] {
 	line-height: 15px;
 	margin-right: 8px;
 	overflow: hidden;
-	padding-right: 0;
-	padding-top: 0;
+	padding: 0;
 	text-decoration: none;
 	width: 16px;
 }
@@ -467,11 +478,9 @@ html/*\*/>/*/*/body table input + a[href*="&edit="][href*="&where"]:before {
 
 html/*\*/>/*/*/body table input + a[href*="&edit="][href*="&where"]:hover {
 	background: #FFC;
-	border: 1px solid #CCC;
 	color: white;
-	font-size: .9em;
-	margin-left: 18px;
-	margin-top: -2px;
+	margin-left: 19px;
+	margin-top: -1px;
 	overflow: visible;
 	padding: 1px 2px;
 	position: absolute;
@@ -514,10 +523,11 @@ html/*\*/>/*/*/body input[name="delete"], html/*\*/>/*/*/body input[name="drop"]
 	cursor: pointer;
 	font-size: .9em;
 	padding: 1px 5px 1px 18px;
+	color: #999;
 }
 
 html/*\*/>/*/*/body input[name="delete"]:hover, html/*\*/>/*/*/body input[name="drop"]:hover {
-	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJdSURBVDjLpZP7S1NhGMf9W7YfogSJboSEUVCY8zJ31trcps6zTI9bLGJpjp1hmkGNxVz4Q6ildtXKXzJNbJRaRmrXoeWx8tJOTWptnrNryre5YCYuI3rh+8vL+/m8PA/PkwIg5X+y5mJWrxfOUBXm91QZM6UluUmthntHqplxUml2lciF6wrmdHriI0Wx3xw2hAediLwZRWRkCPzdDswaSvGqkGCfq8VEUsEyPF1O8Qu3O7A09RbRvjuIttsRbT6HHzebsDjcB4/JgFFlNv9MnkmsEszodIIY7Oaut2OJcSF68Qx8dgv8tmqEL1gQaaARtp5A+N4NzB0lMXxon/uxbI8gIYjB9HytGYuusfiPIQcN71kjgnW6VeFOkgh3XcHLvAwMSDPohOADdYQJdF1FtLMZPmslvhZJk2ahkgRvq4HHUoWHRDqTEDDl2mDkfheiDgt8pw340/EocuClCuFvboQzb0cwIZgki4KhzlaE6w0InipbVzBfqoK/qRH94i0rgokSFeO11iBkp8EdV8cfJo0yD75aE2ZNRvSJ0lZKcBXLaUYmQrCzDT6tDN5SyRqYlWeDLZAg0H4JQ+Jt6M3atNLE10VSwQsN4Z6r0CBwqzXesHmV+BeoyAUri8EyMfi2FowXS5dhd7doo2DVII0V5BAjigP89GEVAtda8b2ehodU4rNaAW+dGfzlFkyo89GTlcrHYCLpKD+V7yeeHNzLjkp24Uu1Ed6G8/F8qjqGRzlbl2H2dzjpMg1KdwsHxOlmJ7GTeZC/nesXbeZ6c9OYnuxUc3fmBuFft/Ff8xMd0s65SXIb/gAAAABJRU5ErkJggg==");
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJdSURBVDjLpZP7S1NhGMf9W7YfogSJboSEUVCY8zJ31trcps6zTI9bLGJpjp1hmkGNxVz4Q6ildtXKXzJNbJRaRmrXoeWx8tJOTWptnrNryre5YCYuI3rh+8vL+/m8PA/PkwIg5X+y5mJWrxfOUBXm91QZM6UluUmthntHqplxUml2lciF6wrmdHriI0Wx3xw2hAediLwZRWRkCPzdDswaSvGqkGCfq8VEUsEyPF1O8Qu3O7A09RbRvjuIttsRbT6HHzebsDjcB4/JgFFlNv9MnkmsEszodIIY7Oaut2OJcSF68Qx8dgv8tmqEL1gQaaARtp5A+N4NzB0lMXxon/uxbI8gIYjB9HytGYuusfiPIQcN71kjgnW6VeFOkgh3XcHLvAwMSDPohOADdYQJdF1FtLMZPmslvhZJk2ahkgRvq4HHUoWHRDqTEDDl2mDkfheiDgt8pw340/EocuClCuFvboQzb0cwIZgki4KhzlaE6w0InipbVzBfqoK/qRH94i0rgokSFeO11iBkp8EdV8cfJo0yD75aE2ZNRvSJ0lZKcBXLaUYmQrCzDT6tDN5SyRqYlWeDLZAg0H4JQ+Jt6M3atNLE10VSwQsN4Z6r0CBwqzXesHmV+BeoyAUri8EyMfi2FowXS5dhd7doo2DVII0V5BAjigP89GEVAtda8b2ehodU4rNaAW+dGfzlFkyo89GTlcrHYCLpKD+V7yeeHNzLjkp24Uu1Ed6G8/F8qjqGRzlbl2H2dzjpMg1KdwsHxOlmJ7GTeZC/nesXbeZ6c9OYnuxUc3fmBuFft/Ff8xMd0s65SXIb/gAAAABJRU5ErkJggg==") no-repeat scroll left center;
 	color: red;
 }
 
