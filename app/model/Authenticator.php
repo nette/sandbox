@@ -1,12 +1,23 @@
 <?php
 
-use Nette\Security as NS;
+use Nette\Security,
+	Nette\Utils\Strings;
 
+
+/*
+CREATE TABLE users (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	username varchar(50) NOT NULL,
+	password char(60) NOT NULL,
+	role varchar(20) NOT NULL,
+	PRIMARY KEY (id)
+);
+*/
 
 /**
  * Users authenticator.
  */
-class Authenticator extends Nette\Object implements NS\IAuthenticator
+class Authenticator extends Nette\Object implements Security\IAuthenticator
 {
 	/** @var Nette\Database\Connection */
 	private $database;
@@ -21,8 +32,7 @@ class Authenticator extends Nette\Object implements NS\IAuthenticator
 
 
 	/**
-	 * Performs an authentication
-	 * @param  array
+	 * Performs an authentication.
 	 * @return Nette\Security\Identity
 	 * @throws Nette\Security\AuthenticationException
 	 */
@@ -32,22 +42,21 @@ class Authenticator extends Nette\Object implements NS\IAuthenticator
 		$row = $this->database->table('users')->where('username', $username)->fetch();
 
 		if (!$row) {
-			throw new NS\AuthenticationException("User '$username' not found.", self::IDENTITY_NOT_FOUND);
+			throw new Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
 		}
 
 		if ($row->password !== $this->calculateHash($password)) {
-			throw new NS\AuthenticationException("Invalid password.", self::INVALID_CREDENTIAL);
+			throw new Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
 		}
 
 		unset($row->password);
-		return new NS\Identity($row->id, $row->role, $row->toArray());
+		return new Security\Identity($row->id, $row->role, $row->toArray());
 	}
 
 
 
 	/**
 	 * Computes salted password hash.
-	 * @param  string
 	 * @return string
 	 */
 	public function calculateHash($password)
