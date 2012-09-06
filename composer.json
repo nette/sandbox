@@ -3,7 +3,7 @@
 	"description": "The sandbox is a pre-packaged Nette Framework project, basic configured structure for your application.",
 	"keywords": ["framework", "mvc", "debugging", "templating", "database", "dbal", "forms", "latte", "neon", "mailing", "images", "micro"],
 	"homepage": "http://nette.org",
-	"license": ["BSD-3", "GPLv2", "GPLv3"],
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
 	"authors": [
 		{
 			"name": "David Grudl",
