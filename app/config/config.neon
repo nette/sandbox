@@ -11,19 +11,17 @@ common:
 		date.timezone: Europe/Prague
 		# zlib.output_compression: yes
 
-
 	nette:
 		application:
 			errorPresenter: Error
 
+		database:
+			dsn: 'mysql:host=localhost;dbname=test'
+			user:
+			password:
+
 		session:
 			expiration: 14 days
-
-		database:
-			default:
-				dsn: 'mysql:host=localhost;dbname=test'
-				user:
-				password:
 
 
 	services:
