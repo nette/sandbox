@@ -1,7 +1,9 @@
 # Apache configuration file (see httpd.apache.org/docs/current/mod/quickreference.html)
 
 # disable directory listing
-Options -Indexes
+<IfModule mod_autoindex.c>
+	Options -Indexes
+</IfModule>
 
 # enable cool URL
 <IfModule mod_rewrite.c>
