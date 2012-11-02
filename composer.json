@@ -1,7 +1,6 @@
 {
 	"name": "nette/sandbox",
 	"description": "The sandbox is a pre-packaged Nette Framework project, basic configured structure for your application.",
-	"keywords": ["framework", "mvc", "debugging", "templating", "database", "dbal", "forms", "latte", "neon", "mailing", "images", "micro"],
 	"homepage": "http://nette.org",
 	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
 	"authors": [
@@ -11,7 +10,7 @@
 		},
 		{
 			"name": "Nette Community",
-			"homepage": "https://github.com/nette/nette/contributors"
+			"homepage": "http://nette.org/contributors"
 		}
 	],
 	"config": {
