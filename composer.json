@@ -19,5 +19,8 @@
 	"require": {
 		"php": ">= 5.3.0",
 		"nette/nette": "@dev"
-	}
+	},
+    "require-dev": {
+        "nette/tester": "@dev"
+    }
 }
