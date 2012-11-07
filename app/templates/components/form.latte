@@ -1,0 +1,14 @@
+{form $form}
+<ul class=error n:if="$form->errors">
+	<li n:foreach="$form->errors as $error">{$error}</li>
+</ul>
+
+<table>
+<tr n:foreach="$form->controls as $input" n:class="$input->required ? required">
+	<th>{if $input->controlPrototype->type !== checkbox}{label $input /}{/if}</th>
+	<td>{input $input} {if $input->controlPrototype->type === checkbox}{label $input /}{/if}
+		<span class=error n:if="$input->errors">{$input->errors|implode:' '}</span>
+	</td>
+</tr>
+</table>
+{/form}
