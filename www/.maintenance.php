@@ -6,8 +6,8 @@ header('Retry-After: 300'); // 5 minutes in seconds
 ?>
 <!DOCTYPE html>
 <meta charset="utf-8">
-<meta name=robots content=noindex>
-<meta name=generator content='Nette Framework'>
+<meta name="robots" content="noindex">
+<meta name="generator" content="Nette Framework">
 
 <style>
 	body { color: #333; background: white; width: 500px; margin: 100px auto }
