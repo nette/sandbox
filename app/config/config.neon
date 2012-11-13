@@ -7,26 +7,21 @@
 parameters:
 
 php:
-		date.timezone: Europe/Prague
-		# zlib.output_compression: yes
+	date.timezone: Europe/Prague
+	# zlib.output_compression: yes
 
 nette:
-		application:
-			errorPresenter: Error
+	application:
+		errorPresenter: Error
 
-		database:
-			dsn: 'mysql:host=localhost;dbname=test'
-			user:
-			password:
-
-		session:
-			expiration: 14 days
+	session:
+		expiration: 14 days
 
 
 services:
-		authenticator: Authenticator
-		routerFactory: RouterFactory
-		router: @routerFactory::createRouter
+	authenticator: Authenticator
+	routerFactory: RouterFactory
+	router: @routerFactory::createRouter
 
 
 factories:
