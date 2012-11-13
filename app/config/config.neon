@@ -13,14 +13,16 @@ php:
 nette:
 	application:
 		errorPresenter: Error
+		mapping:
+			*: App\*Module\*Presenter
 
 	session:
 		expiration: 14 days
 
 
 services:
-	authenticator: Authenticator
-	routerFactory: RouterFactory
+	authenticator: Model\Authenticator
+	routerFactory: App\RouterFactory
 	router: @routerFactory::createRouter
 
 

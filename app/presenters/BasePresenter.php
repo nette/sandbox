@@ -1,5 +1,11 @@
 <?php
 
+namespace App;
+
+use Nette,
+	Model;
+
+
 /**
  * Base presenter for all application presenters.
  */

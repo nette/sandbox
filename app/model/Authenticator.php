@@ -1,6 +1,8 @@
 <?php
 
-use Nette\Security,
+namespace Model;
+
+use Nette,
 	Nette\Utils\Strings;
 
 
@@ -17,7 +19,7 @@ CREATE TABLE users (
 /**
  * Users authenticator.
  */
-class Authenticator extends Nette\Object implements Security\IAuthenticator
+class Authenticator extends Nette\Object implements Nette\Security\IAuthenticator
 {
 	/** @var Nette\Database\Connection */
 	private $database;
@@ -42,15 +44,15 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 		$row = $this->database->table('users')->where('username', $username)->fetch();
 
 		if (!$row) {
-			throw new Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
+			throw new Nette\Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
 		}
 
 		if ($row->password !== $this->calculateHash($password, $row->password)) {
-			throw new Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
+			throw new Nette\Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
 		}
 
 		unset($row->password);
-		return new Security\Identity($row->id, $row->role, $row->toArray());
+		return new Nette\Security\Identity($row->id, $row->role, $row->toArray());
 	}
 
 

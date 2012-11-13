@@ -1,5 +1,11 @@
 <?php
 
+namespace App;
+
+use Nette,
+	Model;
+
+
 /**
  * Homepage presenter.
  */

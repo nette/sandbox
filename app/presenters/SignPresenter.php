@@ -1,6 +1,9 @@
 <?php
 
-use Nette\Application\UI;
+namespace App;
+
+use Nette,
+	Model;
 
 
 /**
@@ -16,7 +19,7 @@ class SignPresenter extends BasePresenter
 	 */
 	protected function createComponentSignInForm()
 	{
-		$form = new UI\Form;
+		$form = new Nette\Application\UI\Form;
 		$form->addText('username', 'Username:')
 			->setRequired('Please enter your username.');
 
