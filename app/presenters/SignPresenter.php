@@ -27,14 +27,14 @@ class SignPresenter extends BasePresenter
 
 		$form->addSubmit('send', 'Sign in');
 
-		// call method signInFormSubmitted() on success
-		$form->onSuccess[] = $this->signInFormSubmitted;
+		// call method signInFormSucceeded() on success
+		$form->onSuccess[] = $this->signInFormSucceeded;
 		return $form;
 	}
 
 
 
-	public function signInFormSubmitted($form)
+	public function signInFormSucceeded($form)
 	{
 		$values = $form->getValues();
 
