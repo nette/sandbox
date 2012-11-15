@@ -2,8 +2,9 @@
 
 require __DIR__ . '/../libs/autoload.php';
 
-if (!include __DIR__ . '/../libs/Nette/tester/Tester/bootstrap.php') {
-	die('Install Nette Tester using `composer update --dev`');
+if (!class_exists('Tester\Assert')) {
+	echo "Install Nette Tester using `composer update --dev`\n";
+	exit(1);
 }
 
 function id($val) {
