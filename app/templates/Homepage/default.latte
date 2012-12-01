@@ -50,7 +50,10 @@
 		{ifset $_SERVER['SERVER_SOFTWARE']}Server {$_SERVER['SERVER_SOFTWARE']}{/ifset} |
 		Nette Framework {=Nette\Framework::VERSION}</footer>
 </div>
+{/#}
 
+{#scripts}
+{include #parent}
 <script src="http://jush.sourceforge.net/jush.js"></script>
 <script>
 	jush.create_links = false;
