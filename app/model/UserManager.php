@@ -17,9 +17,9 @@ CREATE TABLE users (
 */
 
 /**
- * Users authenticator.
+ * Users management.
  */
-class Authenticator extends Nette\Object implements Nette\Security\IAuthenticator
+class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 {
 	/** @var Nette\Database\Connection */
 	private $database;
@@ -54,6 +54,22 @@ class Authenticator extends Nette\Object implements Nette\Security\IAuthenticato
 		$arr = $row->toArray();
 		unset($arr['password']);
 		return new Nette\Security\Identity($row->id, $row->role, $arr);
+	}
+
+
+
+	/**
+	 * Adds new user.
+	 * @param  string
+	 * @param  string
+	 * @return void
+	 */
+	public function add($username, $password)
+	{
+		$this->database->table('users')->insert(array(
+			'username' => $username,
+			'password' => $this->calculateHash($password),
+		));
 	}
 
 
