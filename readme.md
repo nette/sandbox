@@ -5,7 +5,7 @@ The basic skeleton of application.
 
 
 What is [Nette Framework](http://nette.org)?
-------------------------
+--------------------------------------------
 
 Nette Framework is a popular tool for PHP web development. It is designed to be
 the most usable and friendliest as possible. It focuses on security and
@@ -18,12 +18,16 @@ Installing
 ----------
 
 The best way to install Nette Framework is to download latest package
-from http://nette.org/download or create new project using
-[Composer](http://doc.nette.org/composer):
+from http://nette.org/download or create new project using Composer:
 
-	curl -s http://getcomposer.org/installer | php
-	php composer.phar create-project nette/sandbox myApp
-	cd myApp
+1. Install Composer: (see http://getcomposer.org/download)
+
+		curl -s http://getcomposer.org/installer | php
+
+2. Create new project via Composer:
+
+		php composer.phar create-project nette/sandbox myApplication dev-master
+		cd myApplication
 
 Make directories `temp` and `log` writable. Navigate your browser
 to the `www` directory and you will see a welcome page. PHP 5.4 allows
