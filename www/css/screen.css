@@ -36,6 +36,10 @@ form tr, form td {
 	font-weight: normal;
 }
 
+form tr {
+	text-align: right;
+}
+
 form .required label {
 	font-weight: bold;
 }
@@ -43,4 +47,8 @@ form .required label {
 form .error {
 	color: #D00;
 	font-weight: bold;
+}
+
+html.js .jshidden {
+	display: none;
 }
