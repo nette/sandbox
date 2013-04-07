@@ -10,8 +10,10 @@ $configurator = new Nette\Config\Configurator;
 //$configurator->setDebugMode(TRUE);
 $configurator->enableDebugger(__DIR__ . '/../log');
 
-// Enable RobotLoader - this will load all classes automatically
+// Specify folder for cache
 $configurator->setTempDirectory(__DIR__ . '/../temp');
+
+// Enable RobotLoader - this will load all classes automatically
 $configurator->createRobotLoader()
 	->addDirectory(__DIR__)
 	->addDirectory(__DIR__ . '/../libs')
