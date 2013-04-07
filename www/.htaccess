@@ -21,11 +21,3 @@ Options -Indexes
 <IfModule mod_deflate.c>
 	AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/x-javascript text/javascript application/javascript application/json
 </IfModule>
-
-# allow combined JavaScript & CSS. Inside of script.combined.js you could use <!--#include file="script.js" -->
-<IfModule mod_include.c>
-	<FilesMatch "\.combined\.(js|css)$">
-		Options +Includes
-		SetOutputFilter INCLUDES
-	</FilesMatch>
-</IfModule>
