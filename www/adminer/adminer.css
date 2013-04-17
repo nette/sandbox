@@ -208,9 +208,8 @@ table code {
 /* specific */
 
 #content {
-	height: 100%;
 	margin: 40px 0 0 300px;
-	padding: 20px;
+	padding: 20px 20px 60px 20px;
 	background: white;
 	position: absolute;
 	z-index: 1;
@@ -552,8 +551,9 @@ input[name="logout"] {
 
 /* paginator */
 .pages {
-	margin: 1em 0;
-	font-size: 90%;
+	background: #FCFAF5;
+	border: 1px dotted #CCC;
+	left: 320px;
 }
 
 .pages a[href*="&page="] {
