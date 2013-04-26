@@ -11,7 +11,7 @@ function id($val) {
 	return $val;
 }
 
-$configurator = new Nette\Config\Configurator;
+$configurator = new Nette\Configurator;
 $configurator->setDebugMode(FALSE);
 $configurator->setTempDirectory(__DIR__ . '/../temp');
 $configurator->createRobotLoader()
