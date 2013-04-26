@@ -7,6 +7,8 @@ if (!class_exists('Tester\Assert')) {
 	exit(1);
 }
 
+Tester\Helpers::setup(); // configure environment
+
 function id($val) {
 	return $val;
 }
