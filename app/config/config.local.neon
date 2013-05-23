@@ -1,5 +1,6 @@
 parameters:
 
+
 nette:
 	database:
 		dsn: 'mysql:host=localhost;dbname=test'
@@ -8,6 +9,8 @@ nette:
 		options:
 			lazy: yes
 
+
 services:
+
 
 factories:
