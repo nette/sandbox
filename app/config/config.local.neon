@@ -1,5 +1,6 @@
 parameters:
 
+
 nette:
 	database:
 		dsn: 'mysql:host=localhost;dbname=test'
