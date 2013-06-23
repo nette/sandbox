@@ -7,7 +7,7 @@
 <tr n:foreach="$form->controls as $input" n:class="$input->required ? required">
 	<th>{if $input->controlPrototype->type !== checkbox}{label $input /}{/if}</th>
 	<td>{input $input} {if $input->controlPrototype->type === checkbox}{label $input /}{/if}
-		<span class=error n:if="$input->errors">{$input->errors|implode:' '}</span>
+		<span class=error n:if="$input->error">{$input->error}</span>
 	</td>
 </tr>
 </table>
