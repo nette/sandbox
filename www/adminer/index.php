@@ -8,7 +8,7 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) || !isset($_SERVER['REMOTE_ADDR']) |
 }
 
 
-$root = __DIR__ . '/../../libs/dg/adminer-custom';
+$root = __DIR__ . '/../../vendor/dg/adminer-custom';
 
 if (!is_file($root . '/index.php')) {
 	echo "Install Adminer using `composer update`\n";
