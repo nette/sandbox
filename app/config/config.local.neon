@@ -7,7 +7,3 @@ nette:
 		password:
 		options:
 			lazy: yes
-
-services:
-
-factories:

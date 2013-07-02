@@ -9,7 +9,6 @@ use Nette,
 $container = require __DIR__ . '/bootstrap.php';
 
 
-
 class ExampleTest extends Tester\TestCase
 {
 	private $container;

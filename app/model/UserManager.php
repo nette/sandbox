@@ -25,12 +25,10 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	private $database;
 
 
-
 	public function __construct(Nette\Database\SelectionFactory $database)
 	{
 		$this->database = $database;
 	}
-
 
 
 	/**
@@ -57,7 +55,6 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	}
 
 
-
 	/**
 	 * Adds new user.
 	 * @param  string
@@ -71,7 +68,6 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 			'password' => $this->calculateHash($password),
 		));
 	}
-
 
 
 	/**
