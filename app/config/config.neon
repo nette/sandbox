@@ -18,7 +18,7 @@ nette:
 
 	session:
 		expiration: 14 days
-		autoStart: smart
+		autoStart: yes
 
 services:
 	- Model\UserManager
