@@ -21,7 +21,10 @@ $configurator->createRobotLoader()
 
 // Create Dependency Injection container from config.neon file
 $configurator->addConfig(__DIR__ . '/config/config.neon');
-$configurator->addConfig(__DIR__ . '/config/config.local.neon');
+$localConfig = __DIR__ . '/config/config.local.neon';
+if (file_exists($localConfig)) {
+	$configurator->addConfig($localConfig);
+}
 $container = $configurator->createContainer();
 
 return $container;
