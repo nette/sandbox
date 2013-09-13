@@ -1,5 +1,5 @@
 {form $form}
-<ul class=error n:if="$form->errors">
+<ul class="error" n:if="$form->errors">
 	<li n:foreach="$form->errors as $error">{$error}</li>
 </ul>
 
@@ -7,7 +7,7 @@
 <tr n:foreach="$form->controls as $input" n:class="$input->required ? required">
 	<th>{if $input->controlPrototype->type !== checkbox}{label $input /}{/if}</th>
 	<td>{input $input} {if $input->controlPrototype->type === checkbox}{label $input /}{/if}
-		<span class=error n:if="$input->error">{$input->error}</span>
+		<span class="error" n:if="$input->error">{$input->error}</span>
 	</td>
 </tr>
 </table>
