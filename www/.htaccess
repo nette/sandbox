@@ -5,6 +5,12 @@
 	Options -Indexes
 </IfModule>
 
+# Prevents the display of sensitive data in configuration files
+<Files ~ '\.(neon)$'>
+  order allow,deny
+  deny from all
+</Files>
+
 # enable cool URL
 <IfModule mod_rewrite.c>
 	RewriteEngine On
