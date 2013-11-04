@@ -16,7 +16,9 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		COLUMN_ID = 'id',
 		COLUMN_NAME = 'username',
 		COLUMN_PASSWORD = 'password',
-		COLUMN_ROLE = 'role';
+		COLUMN_ROLE = 'role',
+		PASSWORD_MAX_LENGTH = 4096;
+
 
 	/** @var Nette\Database\SelectionFactory */
 	private $database;
@@ -77,6 +79,7 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		if ($password === Strings::upper($password)) { // perhaps caps lock is on
 			$password = Strings::lower($password);
 		}
+		$password = substr($password, 0, self::PASSWORD_MAX_LENGTH);
 		return crypt($password, $salt ?: '$2a$07$' . Strings::random(22));
 	}
 
