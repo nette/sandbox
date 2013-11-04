@@ -13,12 +13,12 @@
 	<meta name="description" content="">
 	<meta name="robots" content="{$robots}" n:ifset="$robots">
 
-	<title>{#title|striptags|upper}Nette Application Skeleton{/#}</title>
+	<title>{block title|striptags|upper}Nette Application Skeleton{/block}</title>
 
 	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
 	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
-	{#head}{/#}
+	{block head}{/block}
 </head>
 
 <body>
@@ -28,10 +28,10 @@
 
 	{include #content}
 
-	{#scripts}
+	{block scripts}
 	<script src="{$basePath}/js/jquery.js"></script>
 	<script src="{$basePath}/js/netteForms.js"></script>
 	<script src="{$basePath}/js/main.js"></script>
-	{/#}
+	{/block}
 </body>
 </html>

@@ -1,6 +1,6 @@
 {* This is the welcome page, you can delete it *}
 
-{#content}
+{block content}
 <div id="banner">
 	<h1 n:block=title>Congratulations!</h1>
 </div>
@@ -50,9 +50,9 @@
 		{ifset $_SERVER['SERVER_SOFTWARE']}Server {$_SERVER['SERVER_SOFTWARE']}{/ifset} |
 		Nette Framework {=Nette\Framework::VERSION}</footer>
 </div>
-{/#}
+{/block}
 
-{#scripts}
+{block scripts}
 {include #parent}
 <script src="http://jush.sourceforge.net/jush.js"></script>
 <script>
@@ -65,10 +65,10 @@
 		return false;
 	});
 </script>
-{/#}
+{/block}
 
 
-{#head}
+{block head}
 <style>
 	html { overflow-y: scroll; }
 	body { font: 14px/1.65 Verdana, "Geneva CE", lucida, sans-serif; background: #3484d2; color: #333; margin: 38px auto; max-width: 940px; min-width: 770px; }
@@ -120,4 +120,4 @@
 	.jush a { color: inherit; background: transparent; }
 	.jush-latte { color: #D59401; font-weight: bold }
 </style>
-{/#}
+{/block}
