@@ -31,7 +31,7 @@ from http://nette.org/download or create new project using Composer:
 
 Make directories `temp` and `log` writable. Navigate your browser
 to the `www` directory and you will see a welcome page. PHP 5.4 allows
-you run `php -S localhost:8888 -t www` to start the webserver and
+you run `php -S localhost:8888 -t www` to start the web server and
 then visit `http://localhost:8888` in your browser.
 
 
