@@ -20,11 +20,11 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		PASSWORD_MAX_LENGTH = 4096;
 
 
-	/** @var Nette\Database\SelectionFactory */
+	/** @var Nette\Database\Context */
 	private $database;
 
 
-	public function __construct(Nette\Database\SelectionFactory $database)
+	public function __construct(Nette\Database\Context $database)
 	{
 		$this->database = $database;
 	}
