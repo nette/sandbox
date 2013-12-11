@@ -1,14 +1,12 @@
 {form $form}
-<ul class=error n:if="$form->errors">
-	<li n:foreach="$form->errors as $error">{$error}</li>
+<ul class=error n:if="$form->ownErrors">
+	<li n:foreach="$form->ownErrors as $error">{$error}</li>
 </ul>
 
 <table>
 <tr n:foreach="$form->controls as $input" n:class="$input->required ? required">
-	<th>{if $input->controlPrototype->type !== checkbox}{label $input /}{/if}</th>
-	<td>{input $input} {if $input->controlPrototype->type === checkbox}{label $input /}{/if}
-		<span class=error n:if="$input->error">{$input->error}</span>
-	</td>
+	<th>{label $input /}</th>
+	<td>{input $input} <span class=error n:ifcontent>{$input->error}</span></td>
 </tr>
 </table>
 {/form}
