@@ -45,6 +45,11 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 
 		} elseif (!self::verifyPassword($password, $row[self::COLUMN_PASSWORD])) {
 			throw new Nette\Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
+
+		} elseif (PHP_VERSION_ID >= 50307 && substr($row[self::COLUMN_PASSWORD], 0, 3) === '$2a') {
+			$row->update(array(
+				self::COLUMN_PASSWORD => self::hashPassword($password),
+			));
 		}
 
 		$arr = $row->toArray();
@@ -80,7 +85,7 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		}
 		$password = substr($password, 0, self::PASSWORD_MAX_LENGTH);
 		$options = $options ?: implode('$', array(
-			'algo' => '$2a', // blowfish
+			'algo' => PHP_VERSION_ID < 50307 ? '$2a' : '$2y', // blowfish
 			'cost' => '07',
 			'salt' => Strings::random(22),
 		));
@@ -94,7 +99,8 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	 */
 	public static function verifyPassword($password, $hash)
 	{
-		return $hash === self::hashPassword($password, $hash);
+		return self::hashPassword($password, $hash) === $hash
+			|| (PHP_VERSION_ID >= 50307 && substr($hash, 0, 3) === '$2a' && self::hashPassword($password, $tmp = '$2x' . substr($hash, 3)) === $tmp);
 	}
 
 }
