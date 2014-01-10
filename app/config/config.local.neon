@@ -1,3 +1,7 @@
+php:
+	date.timezone: Europe/Prague
+	zlib.output_compression: no
+
 parameters:
 
 nette:
