@@ -24,6 +24,9 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	private $database;
 
 
+	/**
+	 * @param Nette\Database\Context
+	 */
 	public function __construct(Nette\Database\Context $database)
 	{
 		$this->database = $database;
