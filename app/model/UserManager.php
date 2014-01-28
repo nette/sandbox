@@ -82,7 +82,7 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		$password = substr($password, 0, self::PASSWORD_MAX_LENGTH);
 		$options = $options ?: implode('$', array(
 			'algo' => '$2y', // blowfish, requires PHP >= 5.3.7
-			'cost' => '07',
+			'cost' => '10',
 			'salt' => Strings::random(22),
 		));
 		return crypt($password, $options);
