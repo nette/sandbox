@@ -16,13 +16,13 @@ nette:
 	application:
 		errorPresenter: Error
 		mapping:
-			*: App\*Module\*Presenter
+			*: App\*Module\Presenters\*Presenter
 
 	session:
 		expiration: 14 days
 
 
 services:
-	- Model\UserManager
+	- App\UserManager
 	- App\RouterFactory
 	router: @App\RouterFactory::createRouter
