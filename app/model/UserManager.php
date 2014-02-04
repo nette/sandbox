@@ -15,7 +15,7 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		TABLE_NAME = 'users',
 		COLUMN_ID = 'id',
 		COLUMN_NAME = 'username',
-		COLUMN_PASSWORD = 'password',
+		COLUMN_PASSWORD_HASH = 'password',
 		COLUMN_ROLE = 'role',
 		PASSWORD_MAX_LENGTH = 4096;
 
@@ -43,12 +43,12 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		if (!$row) {
 			throw new Nette\Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
 
-		} elseif (!self::verifyPassword($password, $row[self::COLUMN_PASSWORD])) {
+		} elseif (!self::verifyPassword($password, $row[self::COLUMN_PASSWORD_HASH])) {
 			throw new Nette\Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
 		}
 
 		$arr = $row->toArray();
-		unset($arr[self::COLUMN_PASSWORD]);
+		unset($arr[self::COLUMN_PASSWORD_HASH]);
 		return new Nette\Security\Identity($row[self::COLUMN_ID], $row[self::COLUMN_ROLE], $arr);
 	}
 
@@ -63,7 +63,7 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	{
 		$this->database->table(self::TABLE_NAME)->insert(array(
 			self::COLUMN_NAME => $username,
-			self::COLUMN_PASSWORD => self::hashPassword($password),
+			self::COLUMN_PASSWORD_HASH => self::hashPassword($password),
 		));
 	}
 
