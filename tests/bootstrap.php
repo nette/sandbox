@@ -9,10 +9,6 @@ if (!class_exists('Tester\Assert')) {
 
 Tester\Environment::setup();
 
-function id($val) {
-	return $val;
-}
-
 $configurator = new Nette\Configurator;
 $configurator->setDebugMode(FALSE);
 $configurator->setTempDirectory(__DIR__ . '/../temp');

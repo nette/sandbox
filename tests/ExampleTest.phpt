@@ -33,4 +33,5 @@ class ExampleTest extends Tester\TestCase
 }
 
 
-id(new ExampleTest($container))->run();
+$test = new ExampleTest($container);
+$test->run();
