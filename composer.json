@@ -17,9 +17,9 @@
 	"require": {
 		"php": ">= 5.3.7",
 		"nette/nette": "~2.1.0",
-		"dg/adminer-custom": "1.*"
+		"dg/adminer-custom": "~1.0"
 	},
 	"require-dev": {
-		"nette/tester": "~1.0.0"
+		"nette/tester": "~1.0"
 	}
 }
