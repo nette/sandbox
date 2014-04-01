@@ -35,9 +35,9 @@
 	</section>
 
 	<section id="layout">
-		<h2>Layout template located at <span>{strstr($template->getFile(), app)}</span></h2>
+		<h2>Layout template located at <span>{strstr($template->getName(), app)}</span></h2>
 
-		<pre><code class="jush">{file_get_contents($template->getFile())}</code></pre>
+		<pre><code class="jush">{file_get_contents($template->getName())}</code></pre>
 	</section>
 
 	<section id="presenter">

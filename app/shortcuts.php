@@ -1,6 +1,6 @@
 <?php
 
-use Nette\Diagnostics\Debugger;
+use Tracy\Debugger;
 
 
 /**
@@ -13,7 +13,7 @@ function callback($callback, $m = NULL)
 
 
 /**
- * Nette\Diagnostics\Debugger::dump() shortcut.
+ * Tracy\Debugger::dump() shortcut.
  */
 function dump($var)
 {
@@ -25,7 +25,7 @@ function dump($var)
 
 
 /**
- * Nette\Diagnostics\Debugger::log() shortcut.
+ * Tracy\Debugger::log() shortcut.
  */
 function dlog($var = NULL)
 {
