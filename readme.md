@@ -26,7 +26,7 @@ from http://nette.org/download or create new project using Composer:
 
 2. Create new project via Composer:
 
-		php composer.phar create-project nette/sandbox myApplication dev-master
+		php composer.phar create-project nette/sandbox myApplication
 		cd myApplication
 
 Make directories `temp` and `log` writable. Navigate your browser
