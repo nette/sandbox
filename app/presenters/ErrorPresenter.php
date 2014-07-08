@@ -4,7 +4,7 @@ namespace App\Presenters;
 
 use Nette,
 	App\Model,
-	Nette\Diagnostics\Debugger;
+	Tracy\Debugger;
 
 
 /**
@@ -28,7 +28,7 @@ class ErrorPresenter extends BasePresenter
 
 		} else {
 			$this->setView('500'); // load template 500.latte
-			Debugger::log($exception, Debugger::ERROR); // and log exception
+			Debugger::log($exception, Debugger::EXCEPTION); // and log exception
 		}
 
 		if ($this->isAjax()) { // AJAX request? Note this error in payload.
