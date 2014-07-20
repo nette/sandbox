@@ -3,7 +3,8 @@
 namespace App\Model;
 
 use Nette,
-	Nette\Utils\Strings;
+	Nette\Utils\Strings,
+	App\Passwords;
 
 
 /**
