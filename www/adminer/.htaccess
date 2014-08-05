@@ -1,4 +1,0 @@
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule (adminer.css|static/.+) index.php?file=$1 [L,QSA]
-</IfModule>
