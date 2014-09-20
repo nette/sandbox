@@ -2,7 +2,7 @@
  * NetteForms - simple form validation.
  *
  * This file is part of the Nette Framework.
- * Copyright (c) 2004, 2014 David Grudl (http://davidgrudl.com)
+ * Copyright (c) 2004, 2013 David Grudl (http://davidgrudl.com)
  */
 
 var Nette = Nette || {};
@@ -29,23 +29,13 @@ Nette.getValue = function(elem) {
 	if (!elem) {
 		return null;
 
-	} else if (!elem.nodeName) { // RadioNodeList, HTMLCollection, array
-		var multi = elem[0] && !!elem[0].name.match(/\[\]$/),
-			res = [];
-
+	} else if (!elem.nodeName) { // RadioNodeList
 		for (i = 0, len = elem.length; i < len; i++) {
-			if (elem[i].type in {checkbox: 1, radio: 1} && !elem[i].checked) {
-				continue;
-			} else if (multi) {
-				res.push(elem[i].value);
-			} else {
+			if (elem[i].checked) {
 				return elem[i].value;
 			}
 		}
-		return multi ? res : null;
-
-	} else if (!elem.form.elements[elem.name].nodeName) { // multi element
-		return Nette.getValue(elem.form.elements[elem.name]);
+		return null;
 
 	} else if (elem.nodeName.toLowerCase() === 'select') {
 		var index = elem.selectedIndex, options = elem.options, values = [];
@@ -61,8 +51,11 @@ Nette.getValue = function(elem) {
 		}
 		return values;
 
-	} else if (elem.type in {checkbox: 1, radio: 1}) {
+	} else if (elem.type === 'checkbox') {
 		return elem.checked;
+
+	} else if (elem.type === 'radio') {
+		return Nette.getValue(elem.form.elements[elem.name].nodeName ? [elem] : elem.form.elements[elem.name]);
 
 	} else if (elem.type === 'file') {
 		return elem.files || elem.value;
@@ -237,9 +230,7 @@ Nette.validateRule = function(elem, op, arg) {
 
 Nette.validators = {
 	filled: function(elem, arg, val) {
-		return val !== '' && val !== false && val !== null
-			&& (!Nette.isArray(val) || val.length)
-			&& (!window.FileList || !(val instanceof FileList) || val.length);
+		return val !== '' && val !== false && val !== null;
 	},
 
 	blank: function(elem, arg, val) {
@@ -314,14 +305,6 @@ Nette.validators = {
 		return (/^-?[0-9]*[.,]?[0-9]+$/).test(val);
 	},
 
-	min: function(elem, arg, val) {
-		return Nette.validators.range(elem, [arg, null], val);
-	},
-
-	max: function(elem, arg, val) {
-		return Nette.validators.range(elem, [null, arg], val);
-	},
-
 	range: function(elem, arg, val) {
 		return Nette.isArray(arg) ?
 			((arg[0] === null || parseFloat(val) >= arg[0]) && (arg[1] === null || parseFloat(val) <= arg[1])) : null;
@@ -340,17 +323,6 @@ Nette.validators = {
 			}
 		}
 		return true;
-	},
-	image: function (elem, arg, val) {
-		if (window.FileList && val instanceof FileList) {
-			for (var i = 0; i < val.length; i++) {
-				var type = val[i].type;
-				if (type && type !== 'image/gif' && type !== 'image/png' && type !== 'image/jpeg') {
-					return false;
-				}
-			}
-		}
-		return true;
 	}
 };
 
@@ -358,17 +330,17 @@ Nette.validators = {
 /**
  * Process all toggles in form.
  */
-Nette.toggleForm = function(form, elem) {
+Nette.toggleForm = function(form, firsttime) {
 	var i;
 	Nette.toggles = {};
 	for (i = 0; i < form.elements.length; i++) {
 		if (form.elements[i].nodeName.toLowerCase() in {input: 1, select: 1, textarea: 1, button: 1}) {
-			Nette.toggleControl(form.elements[i], null, null, !elem);
+			Nette.toggleControl(form.elements[i], null, null, firsttime);
 		}
 	}
 
 	for (i in Nette.toggles) {
-		Nette.toggle(i, Nette.toggles[i], elem);
+		Nette.toggle(i, Nette.toggles[i]);
 	}
 };
 
@@ -379,8 +351,8 @@ Nette.toggleForm = function(form, elem) {
 Nette.toggleControl = function(elem, rules, topSuccess, firsttime) {
 	rules = rules || Nette.parseJSON(elem.getAttribute('data-nette-rules'));
 	var has = false, __hasProp = Object.prototype.hasOwnProperty, handler = function() {
-		Nette.toggleForm(elem.form, elem);
-	}, handled = [];
+		Nette.toggleForm(elem.form);
+	};
 
 	for (var id = 0, len = rules.length; id < len; id++) {
 		var rule = rules[id], op = rule.op.match(/(~)?([^?]+)/);
@@ -410,15 +382,12 @@ Nette.toggleControl = function(elem, rules, topSuccess, firsttime) {
 					els = el.nodeName ? [el] : el; // is radiolist?
 
 				for (var i = 0; i < els.length; i++) {
-					if (!Nette.inArray(handled, els[i])) {
-						Nette.addEvent(els[i], oldIE && el.type in {checkbox: 1, radio: 1} ? 'click' : 'change', handler);
-						handled.push(els[i]);
-					}
+					Nette.addEvent(els[i], oldIE && el.type in {checkbox: 1, radio: 1} ? 'click' : 'change', handler);
 				}
 			}
 			for (var id2 in rule.toggle || []) {
 				if (__hasProp.call(rule.toggle, id2)) {
-					Nette.toggles[id2] = Nette.toggles[id2] || (success ^ !rule.toggle[id2]);
+					Nette.toggles[id2] = Nette.toggles[id2] || (success && rule.toggle[id2]);
 				}
 			}
 		}
@@ -439,7 +408,7 @@ Nette.parseJSON = function(s) {
 /**
  * Displays or hides HTML element.
  */
-Nette.toggle = function(id, visible, srcElement) {
+Nette.toggle = function(id, visible) {
 	var elem = document.getElementById(id);
 	if (elem) {
 		elem.style.display = visible ? '' : 'none';
@@ -470,7 +439,7 @@ Nette.initForm = function(form) {
 		form['nette-submittedBy'] = (target.type in {submit: 1, image: 1}) ? target : null;
 	});
 
-	Nette.toggleForm(form);
+	Nette.toggleForm(form, true);
 };
 
 
@@ -479,23 +448,6 @@ Nette.initForm = function(form) {
  */
 Nette.isArray = function(arg) {
 	return Object.prototype.toString.call(arg) === '[object Array]';
-};
-
-
-/**
- * Search for a specified value within an array.
- */
-Nette.inArray = function(arr, val) {
-	if (Array.prototype.indexOf) {
-		return arr.indexOf(val) > -1;
-	} else {
-		for (var i = 0; i < arr.length; i++) {
-			if (arr[i] === val) {
-				return true;
-			}
-		}
-		return false;
-	}
 };
 
 
