@@ -1,6 +1,7 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+define('NETTE_ROOT', __DIR__ . '/..');
+require NETTE_ROOT . '/vendor/autoload.php';
 
 $configurator = new Nette\Configurator;
 
