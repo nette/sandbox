@@ -195,11 +195,11 @@ Nette.isDisabled = function(elem) {
  * Display error message.
  */
 Nette.addError = function(elem, message) {
-	if (elem.focus) {
-		elem.focus();
-	}
 	if (message) {
 		alert(message);
+	}
+	if (elem.focus) {
+		elem.focus();
 	}
 };
 
@@ -418,7 +418,7 @@ Nette.toggleControl = function(elem, rules, topSuccess, firsttime) {
 			}
 			for (var id2 in rule.toggle || []) {
 				if (__hasProp.call(rule.toggle, id2)) {
-					Nette.toggles[id2] = Nette.toggles[id2] || (success ^ !rule.toggle[id2]);
+					Nette.toggles[id2] = Nette.toggles[id2] || (rule.toggle[id2] ? success : !success);
 				}
 			}
 		}
