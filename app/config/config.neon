@@ -1,7 +1,5 @@
 #
-# SECURITY WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
-#
-# If you don't protect this directory from direct web access, anybody will be able to see your passwords.
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
 # http://nette.org/security-warning
 #
 parameters:
@@ -11,14 +9,14 @@ php:
 	date.timezone: Europe/Prague
 
 
-nette:
-	application:
-		errorPresenter: Error
-		mapping:
-			*: App\*Module\Presenters\*Presenter
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
 
-	session:
-		expiration: 14 days
+
+session:
+	expiration: 14 days
 
 
 services:
