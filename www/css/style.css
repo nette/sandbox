@@ -48,7 +48,3 @@ form .error {
 	color: #D00;
 	font-weight: bold;
 }
-
-html.js .jshidden {
-	display: none;
-}
