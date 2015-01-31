@@ -67,10 +67,19 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	 */
 	public function add($username, $password)
 	{
-		$this->database->table(self::TABLE_NAME)->insert(array(
-			self::COLUMN_NAME => $username,
-			self::COLUMN_PASSWORD_HASH => Passwords::hash($password),
-		));
+		try {
+			$this->database->table(self::TABLE_NAME)->insert(array(
+				self::COLUMN_NAME => $username,
+				self::COLUMN_PASSWORD_HASH => Passwords::hash($password),
+			));
+		} catch (Nette\Database\UniqueConstraintViolationException $e) {
+			throw new DuplicateNameException;
+		}
 	}
 
 }
+
+
+
+class DuplicateNameException extends \Exception
+{}
