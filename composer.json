@@ -16,13 +16,14 @@
 	],
 	"require": {
 		"php": ">= 5.3.7",
-		"nette/nette": "~2.2@dev",
+		"nette/nette": "~2.3.0",
 		"dg/adminer-custom": "~1.5"
 	},
 	"require-dev": {
 		"nette/tester": "~1.0"
 	},
-	"minimum-stability": "dev",
+	"minimum-stability": "beta",
+	"prefer-stable": true,
 	"extra": {
 		"branch-alias": {
 			"dev-master": "2.3-dev"
