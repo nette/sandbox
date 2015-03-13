@@ -1,0 +1,7 @@
+{
+	"name": "nette/sandbox",
+	"dependencies": {
+		"jquery": "1.*",
+		"nette-forms": "*"
+	}
+}
