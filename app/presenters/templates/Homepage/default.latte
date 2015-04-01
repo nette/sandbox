@@ -47,10 +47,6 @@
 
 		<pre><code class="jush-php">{file_get_contents($presenter->getReflection()->getFileName())}</code></pre>
 	</section>
-
-	<footer>PHP {=PHP_VERSION} |
-		{ifset $_SERVER['SERVER_SOFTWARE']}Server {$_SERVER['SERVER_SOFTWARE']}{/ifset} |
-		Nette Framework {=Nette\Framework::VERSION}</footer>
 </div>
 {/block}
 
@@ -115,8 +111,6 @@
 	section { display: none; }
 
 	pre { font-size: 12px; line-height: 1.4; padding: 10px; margin: 1.3em 0; overflow: auto; max-height: 500px; background: #F1F5FB; border-radius: 5px; box-shadow: 0 1px 1px rgba(0, 0, 0, .1); }
-
-	footer { font-size: 70%; padding: 1em 0; color: gray; }
 
 	.jush-com, .jush-php_doc { color: #929292; }
 	.jush-tag, .jush-tag_js { color: #6A8527; font-weight: bold; }
