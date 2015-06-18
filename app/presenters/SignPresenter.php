@@ -2,13 +2,10 @@
 
 namespace App\Presenters;
 
-use Nette,
-	App\Model;
+use Nette;
+use App\Model;
 
 
-/**
- * Sign in/out presenters.
- */
 class SignPresenter extends BasePresenter
 {
 
