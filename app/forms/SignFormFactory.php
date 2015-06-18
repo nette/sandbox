@@ -2,9 +2,9 @@
 
 namespace App\Forms;
 
-use Nette,
-	Nette\Application\UI\Form,
-	Nette\Security\User;
+use Nette;
+use Nette\Application\UI\Form;
+use Nette\Security\User;
 
 
 class SignFormFactory extends Nette\Object
@@ -40,7 +40,7 @@ class SignFormFactory extends Nette\Object
 	}
 
 
-	public function formSucceeded($form, $values)
+	public function formSucceeded(Form $form, $values)
 	{
 		if ($values->remember) {
 			$this->user->setExpiration('14 days', FALSE);

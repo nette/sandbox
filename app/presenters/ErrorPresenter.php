@@ -2,14 +2,11 @@
 
 namespace App\Presenters;
 
-use Nette,
-	App\Model,
-	Tracy\ILogger;
+use Nette;
+use App\Model;
+use Tracy\ILogger;
 
 
-/**
- * Error presenter.
- */
 class ErrorPresenter extends BasePresenter
 {
 	/** @var ILogger */

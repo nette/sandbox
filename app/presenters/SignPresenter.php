@@ -2,13 +2,10 @@
 
 namespace App\Presenters;
 
-use Nette,
-	App\Forms\SignFormFactory;
+use Nette;
+use App\Forms\SignFormFactory;
 
 
-/**
- * Sign in/out presenters.
- */
 class SignPresenter extends BasePresenter
 {
 	/** @var SignFormFactory @inject */

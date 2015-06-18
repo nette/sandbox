@@ -2,9 +2,8 @@
 
 namespace App\Model;
 
-use Nette,
-	Nette\Utils\Strings,
-	Nette\Security\Passwords;
+use Nette;
+use Nette\Security\Passwords;
 
 
 /**
