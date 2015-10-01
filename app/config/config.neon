@@ -11,6 +11,7 @@ php:
 
 application:
 	errorPresenter: Error
+	catchExceptions: yes
 	mapping:
 		*: App\*Module\Presenters\*Presenter
 
@@ -23,3 +24,4 @@ services:
 	- App\Model\UserManager
 	- App\Forms\SignFormFactory
 	router: App\RouterFactory::createRouter
+	- App\Presenters\ErrorPresenter(..., %debugMode%)
