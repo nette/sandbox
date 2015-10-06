@@ -12,7 +12,7 @@ Usage: create-user.php <name> <password>
 list(, $name, $password) = $_SERVER['argv'];
 
 $container = require __DIR__ . '/../app/bootstrap.php';
-$manager = $container->getByType('App\Model\UserManager');
+$manager = $container->getByType(App\Model\UserManager::class);
 
 try {
 	$manager->add($name, $password);
