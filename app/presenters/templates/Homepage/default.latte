@@ -92,7 +92,7 @@
 	h2 a { text-decoration: none; background: transparent; }
 
 	.boxes { -webkit-justify-content: space-between; justify-content: space-between; display: -webkit-flex; display: flex; margin-right: -2em; }
-	.boxes > div { background: #f0f0f0; border: 1px solid #e6e6e6; border-radius: 5px; margin-right: 2em; }
+	.boxes > div { background: #f0f0f0; border: 1px solid #e6e6e6; border-radius: 5px; -webkit-flex: 1; flex: 1; margin-right: 2em; }
 	.boxes h2 { text-align: right; margin: 1em; }
 	.boxes img { float: left; }
 	.boxes p { clear: both; margin: 1em; }
@@ -104,7 +104,7 @@
 	.boxes > div:nth-child(3n) h2 a { color: #578404; background: transparent; }
 	@media (max-width: 760px) {
 		.boxes { -webkit-flex-direction: column; flex-direction: column; }
-		.boxes > div { margin-bottom: 1em; }
+		.boxes > div { margin-bottom: 1em; flex-basis: auto; }
 		.boxes h2 br { display: none; }
 	}
 
