@@ -9,12 +9,16 @@ use Nette\Security\User;
 
 class SignFormFactory extends Nette\Object
 {
+	/** @var FormFactory */
+	private $factory;
+
 	/** @var User */
 	private $user;
 
 
-	public function __construct(User $user)
+	public function __construct(FormFactory $factory, User $user)
 	{
+		$this->factory = $factory;
 		$this->user = $user;
 	}
 
@@ -24,7 +28,7 @@ class SignFormFactory extends Nette\Object
 	 */
 	public function create()
 	{
-		$form = new Form;
+		$form = $this->factory->create();
 		$form->addText('username', 'Username:')
 			->setRequired('Please enter your username.');
 
