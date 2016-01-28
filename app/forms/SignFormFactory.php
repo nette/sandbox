@@ -55,7 +55,7 @@ class SignFormFactory extends Nette\Object
 		try {
 			$this->user->login($values->username, $values->password);
 		} catch (Nette\Security\AuthenticationException $e) {
-			$form->addError($e->getMessage());
+			$form->addError('The username or password you entered is incorrect.');
 		}
 	}
 
