@@ -2,7 +2,6 @@
  * @param string   $basePath web base path
  * @param array    $flashes  flash messages
  *}
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +10,6 @@
 	<title>{ifset title}{include title|striptags} | {/ifset}Nette Sandbox</title>
 
 	<link rel="stylesheet" href="{$basePath}/css/style.css">
-	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
 	<meta name="viewport" content="width=device-width">
 	{block head}{/block}
 </head>
@@ -22,8 +20,8 @@
 	{include content}
 
 	{block scripts}
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="//nette.github.io/resources/js/netteForms.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
 	<script src="{$basePath}/js/main.js"></script>
 	{/block}
 </body>
