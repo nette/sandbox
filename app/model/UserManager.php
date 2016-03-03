@@ -63,6 +63,7 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	 * @param  string
 	 * @param  string
 	 * @return void
+	 * @throws DuplicateNameException
 	 */
 	public function add($username, $password)
 	{
