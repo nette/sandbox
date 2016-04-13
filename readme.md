@@ -41,7 +41,8 @@ via a web browser. See [security warning](https://nette.org/security-warning).
 Requirements
 ------------
 
-PHP 5.6 or higher.
+PHP 5.6 or higher. To check whether server configuration meets the minimum requirements for
+Nette Framework browse to the directory `/checker` in your project root (i.e. `http://localhost:8000/checker`).
 
 
 Adminer
