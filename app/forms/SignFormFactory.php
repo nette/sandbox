@@ -28,7 +28,7 @@ class SignFormFactory
 	/**
 	 * @return Form
 	 */
-	public function create()
+	public function create(callable $onSuccess)
 	{
 		$form = $this->factory->create();
 		$form->addText('username', 'Username:')
@@ -41,12 +41,14 @@ class SignFormFactory
 
 		$form->addSubmit('send', 'Sign in');
 
-		$form->onSuccess[] = [$this, 'formSucceeded'];
+		$form->onSuccess[] = function (Form $form, $values) use ($onSuccess) {
+			$this->processForm($form, $values, $onSuccess);
+		};
 		return $form;
 	}
 
 
-	public function formSucceeded(Form $form, $values)
+	public function processForm(Form $form, $values, callable $onSuccess)
 	{
 		if ($values->remember) {
 			$this->user->setExpiration('14 days', FALSE);
@@ -58,7 +60,10 @@ class SignFormFactory
 			$this->user->login($values->username, $values->password);
 		} catch (Nette\Security\AuthenticationException $e) {
 			$form->addError('The username or password you entered is incorrect.');
+			return;
 		}
+
+		$onSuccess();
 	}
 
 }
