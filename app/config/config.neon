@@ -22,5 +22,5 @@ session:
 services:
 	- App\Model\UserManager
 	- App\Forms\FormFactory
-	- App\Forms\SignFormFactory
+	- App\Forms\SignInFormFactory
 	router: App\RouterFactory::createRouter
