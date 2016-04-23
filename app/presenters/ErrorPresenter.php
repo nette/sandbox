@@ -13,10 +13,14 @@ class ErrorPresenter implements Nette\Application\IPresenter
 	/** @var ILogger */
 	private $logger;
 
+	/** @var bool */
+	private $debugMode;
 
-	public function __construct(ILogger $logger)
+
+	public function __construct(ILogger $logger, $debugMode = FALSE)
 	{
 		$this->logger = $logger;
+		$this->debugMode = $debugMode;
 	}
 
 
@@ -30,6 +34,9 @@ class ErrorPresenter implements Nette\Application\IPresenter
 		if ($e instanceof Nette\Application\BadRequestException) {
 			// $this->logger->log("HTTP code {$e->getCode()}: {$e->getMessage()} in {$e->getFile()}:{$e->getLine()}", 'access');
 			return new Nette\Application\Responses\ForwardResponse($request->setPresenterName('Error4xx'));
+
+		} elseif ($this->debugMode) {
+			throw $e;
 		}
 
 		$this->logger->log($e, ILogger::EXCEPTION);
