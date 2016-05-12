@@ -3,6 +3,9 @@
 
 {control signInForm}
 
-{* or use {include '../components/form.latte', form => signInForm} *}
+{* OR
+{import '../components/form.latte'}
+{include form signInForm}
+*}
 
 <p><a n:href="up">Don't have an account yet? Sign up.</a></p>
