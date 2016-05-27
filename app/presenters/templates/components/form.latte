@@ -9,7 +9,7 @@
 		n:if="!$input->getOption(rendered) && $input->getOption(type) !== hidden"
 		n:class="$input->required ? required">
 
-		<th>{label $input /}</th>
+		<th>{label $input}</th>
 		<td>{input $input} <span class=error n:ifcontent>{$input->error}</span></td>
 	</tr>
 	</table>
