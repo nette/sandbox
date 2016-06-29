@@ -9,6 +9,9 @@ use Nette\Application\UI\Form;
 
 class SignPresenter extends BasePresenter
 {
+	/** @persistent */
+	public $backlink = '';
+
 	/** @var Forms\SignInFormFactory */
 	private $signInFactory;
 
@@ -29,6 +32,7 @@ class SignPresenter extends BasePresenter
 	protected function createComponentSignInForm(): Form
 	{
 		return $this->signInFactory->create(function () {
+			$this->restoreRequest($this->backlink);
 			$this->redirect('Homepage:');
 		});
 	}
