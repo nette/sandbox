@@ -14,6 +14,9 @@ class SignPresenter extends BasePresenter
 	/** @var Forms\SignUpFormFactory @inject */
 	public $signUpFactory;
 
+	/** @persistent */
+	public $backlink = '';
+
 
 	/**
 	 * Sign-in form factory.
@@ -22,6 +25,7 @@ class SignPresenter extends BasePresenter
 	protected function createComponentSignInForm()
 	{
 		return $this->signInFactory->create(function () {
+			$this->restoreRequest($this->backlink);
 			$this->redirect('Homepage:');
 		});
 	}
