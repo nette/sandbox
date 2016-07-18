@@ -161,6 +161,13 @@ $tests[] = array(
 );
 
 $tests[] = array(
+	'title' => 'PDO SQLite extension',
+	'required' => FALSE,
+	'passed' => extension_loaded('pdo_sqlite'),
+	'description' => 'PDO SQLite driver is absent. You will not be able to use <code>SQLiteJournal</code>, i.e. tags in caching.',
+);
+
+$tests[] = array(
 	'title' => 'Multibyte String extension',
 	'required' => FALSE,
 	'passed' => extension_loaded('mbstring'),
