@@ -1,6 +1,6 @@
 <?php
 
-if (!isset($_SERVER['argv'][2])) {
+if (!isset($_SERVER['argv'][3])) {
 	echo '
 Add new user to database.
 
