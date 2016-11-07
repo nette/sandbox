@@ -64,6 +64,15 @@ if (!isset($_SERVER['SERVER_SOFTWARE']) || strpos($_SERVER['SERVER_SOFTWARE'], '
 	);
 }
 
+if (!isset($_SERVER['SERVER_SOFTWARE']) || strpos($_SERVER['SERVER_SOFTWARE'], 'nginx') !== FALSE) {
+	$tests['ng'] = array(
+		'title' => 'try_files rewrite rules',
+		'required' => FALSE,
+		'description' => 'Rewrite rules in nginx are probably not correct. Use try_files $uri $uri/ /index.php$is_args$args;',
+		'script' => '<script src="assets/nginx/checker.php?ok"></script> <script>displayResult("ng", nginxChecker === 1)</script>',
+	);
+}
+
 $tests[] = array(
 	'title' => 'Function ini_set()',
 	'required' => FALSE,
