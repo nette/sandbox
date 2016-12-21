@@ -51,6 +51,7 @@ class SignInFormFactory
 			}
 			$onSuccess();
 		};
+
 		return $form;
 	}
 

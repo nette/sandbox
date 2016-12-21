@@ -36,9 +36,8 @@ class SignUpFormFactory
 		$form->addText('username', 'Pick a username:')
 			->setRequired('Please pick a username.');
 
-		$form->addText('email', 'Your e-mail:')
-			->setRequired('Please enter your e-mail.')
-			->addRule($form::EMAIL);
+		$form->addEmail('email', 'Your e-mail:')
+			->setRequired('Please enter your e-mail.');
 
 		$form->addPassword('password', 'Create a password:')
 			->setOption('description', sprintf('at least %d characters', self::PASSWORD_MIN_LENGTH))
@@ -51,11 +50,12 @@ class SignUpFormFactory
 			try {
 				$this->userManager->add($values->username, $values->email, $values->password);
 			} catch (Model\DuplicateNameException $e) {
-				$form->addError('Username is already taken.');
+				$form['username']->addError('Username is already taken.');
 				return;
 			}
 			$onSuccess();
 		};
+
 		return $form;
 	}
 
