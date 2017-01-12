@@ -38,6 +38,16 @@ It is CRITICAL that whole `app/`, `log/` and `temp/` directories are not accessi
 via a web browser. See [security warning](https://nette.org/security-warning).
 
 
+Tests
+-----
+
+There are simple test examples in `tests` folder. You can run them using this command:
+
+		vendor/bin/run-tests -C
+
+In case you want to run full tests you should setup database connection in `app/config/config.local.neon` file first
+
+
 Requirements
 ------------
 

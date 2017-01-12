@@ -34,7 +34,8 @@
 		"dg/adminer-custom": "^1.6"
 	},
 	"require-dev": {
-		"nette/tester": "^1.6"
+		"nette/tester": "2.0.x-dev as v1.7",
+		"mrtnzlml/testbench": "^2.3"
 	},
 	"minimum-stability": "dev"
 }

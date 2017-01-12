@@ -6,22 +6,22 @@ use Nette;
 use Tester;
 use Tester\Assert;
 
-$container = require __DIR__ . '/bootstrap.php';
+require __DIR__ . '/bootstrap.php';
 
 
+/**
+ * @testCase
+ */
 class ExampleTest extends Tester\TestCase
 {
+	use \Testbench\TCompiledContainer;
+
 	private $container;
-
-
-	function __construct(Nette\DI\Container $container)
-	{
-		$this->container = $container;
-	}
 
 
 	function setUp()
 	{
+		$this->container = $this->getContainer();
 	}
 
 
@@ -33,5 +33,5 @@ class ExampleTest extends Tester\TestCase
 }
 
 
-$test = new ExampleTest($container);
+$test = new ExampleTest();
 $test->run();
