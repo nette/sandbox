@@ -34,10 +34,9 @@ class UserManager implements Nette\Security\IAuthenticator
 
 	/**
 	 * Performs an authentication.
-	 * @return Nette\Security\Identity
 	 * @throws Nette\Security\AuthenticationException
 	 */
-	public function authenticate(array $credentials)
+	public function authenticate(array $credentials): Nette\Security\IIdentity
 	{
 		list($username, $password) = $credentials;
 
