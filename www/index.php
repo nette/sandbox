@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // Uncomment this line if you must temporarily take down your site for maintenance.
 // require __DIR__ . '/.maintenance.php';
 

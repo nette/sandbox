@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) || !isset($_SERVER['REMOTE_ADDR']) ||
 	!in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']))
 {

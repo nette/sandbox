@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 header('HTTP/1.1 503 Service Unavailable');
 header('Retry-After: 300'); // 5 minutes in seconds
 
