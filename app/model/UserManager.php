@@ -64,13 +64,9 @@ class UserManager implements Nette\Security\IAuthenticator
 
 	/**
 	 * Adds new user.
-	 * @param  string
-	 * @param  string
-	 * @param  string
-	 * @return void
 	 * @throws DuplicateNameException
 	 */
-	public function add($username, $email, $password)
+	public function add(string $username, string $email, string $password): void
 	{
 		try {
 			$this->database->table(self::TABLE_NAME)->insert([

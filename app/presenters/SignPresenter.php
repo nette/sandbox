@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Presenters;
 
 use Nette;
+use Nette\Application\UI\Form;
 use App\Forms;
 
 
@@ -19,9 +20,8 @@ class SignPresenter extends BasePresenter
 
 	/**
 	 * Sign-in form factory.
-	 * @return Nette\Application\UI\Form
 	 */
-	protected function createComponentSignInForm()
+	protected function createComponentSignInForm(): Form
 	{
 		return $this->signInFactory->create(function () {
 			$this->redirect('Homepage:');
@@ -31,9 +31,8 @@ class SignPresenter extends BasePresenter
 
 	/**
 	 * Sign-up form factory.
-	 * @return Nette\Application\UI\Form
 	 */
-	protected function createComponentSignUpForm()
+	protected function createComponentSignUpForm(): Form
 	{
 		return $this->signUpFactory->create(function () {
 			$this->redirect('Homepage:');
