@@ -20,4 +20,4 @@ services:
 	- App\Forms\FormFactory
 	- App\Forms\SignInFormFactory
 	- App\Forms\SignUpFormFactory
-	router: App\RouterFactory::createRouter
+	router: App\Router\RouterFactory::createRouter
