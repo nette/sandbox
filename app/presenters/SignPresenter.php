@@ -11,11 +11,18 @@ use App\Forms;
 
 class SignPresenter extends BasePresenter
 {
-	/** @var Forms\SignInFormFactory @inject */
-	public $signInFactory;
+	/** @var Forms\SignInFormFactory */
+	private $signInFactory;
 
-	/** @var Forms\SignUpFormFactory @inject */
-	public $signUpFactory;
+	/** @var Forms\SignUpFormFactory */
+	private $signUpFactory;
+
+
+	public function __construct(Forms\SignInFormFactory $signInFactory, Forms\SignUpFormFactory $signUpFactory)
+	{
+		$this->signInFactory = $signInFactory;
+		$this->signUpFactory = $signUpFactory;
+	}
 
 
 	/**
