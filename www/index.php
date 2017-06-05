@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-// Uncomment this line if you must temporarily take down your site for maintenance.
-// require __DIR__ . '/.maintenance.php';
-
 $container = require __DIR__ . '/../app/bootstrap.php';
 
-$container->getByType(Nette\Application\Application::class)->run();
+$container->getByType(Nette\Application\Application::class)
+	->run();
