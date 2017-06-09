@@ -5,9 +5,16 @@
  * the requirements for running Nette Framework.
  */
 
+$localhost = ! isset($_SERVER['HTTP_X_FORWARDED_FOR'])
+	&& isset($_SERVER['REMOTE_ADDR'])
+	&& in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
 
-if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) || !isset($_SERVER['REMOTE_ADDR']) ||
-	!in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']))
+if (!$localhost)
+{
+	$localhost = isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] === 'nette-sandbox.vagrant';
+}
+
+if (!$localhost)
 {
 	header('HTTP/1.1 403 Forbidden');
 	echo 'Requirements Checker is available only from localhost';

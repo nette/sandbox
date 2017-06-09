@@ -1,0 +1,17 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	root /var/www/nette-sandbox.vagrant/www;
+	index index.php;
+	server_name nette-sandbox.vagrant;
+
+	location / {
+		try_files $uri $uri/ /index.php?$args;
+	}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/run/php/php7.1-fpm.sock;
+	}
+}

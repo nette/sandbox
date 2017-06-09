@@ -38,6 +38,21 @@ It is CRITICAL that whole `app/`, `log/` and `temp/` directories are not accessi
 via a web browser. See [security warning](https://nette.org/security-warning).
 
 
+Vagrant Server Setup
+--------------------
+
+Another way to get started is using [Vagrant](https://www.vagrantup.com).
+
+After installing Vagrant install [Vagrant Host Manager](https://github.com/devopsgroup-io/vagrant-hostmanager):
+
+	vagrant plugin install vagrant-hostmanager
+
+Now you are ready to start vagrant machine:
+
+	vagrant up
+
+After a while Nette Sandbox is available at [http://nette-sandbox.vagrant](http://nette-sandbox.vagrant).
+
 Requirements
 ------------
 
