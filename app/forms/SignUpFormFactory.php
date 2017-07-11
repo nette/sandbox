@@ -40,7 +40,7 @@ class SignUpFormFactory
 		$form->addPassword('password', 'Create a password:')
 			->setOption('description', sprintf('at least %d characters', self::PASSWORD_MIN_LENGTH))
 			->setRequired('Please create a password.')
-			->addRule($form::MIN_LENGTH, NULL, self::PASSWORD_MIN_LENGTH);
+			->addRule($form::MIN_LENGTH, null, self::PASSWORD_MIN_LENGTH);
 
 		$form->addSubmit('send', 'Sign up');
 

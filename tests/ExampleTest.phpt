@@ -29,7 +29,7 @@ class ExampleTest extends Tester\TestCase
 
 	function testSomething()
 	{
-		Assert::true(TRUE);
+		Assert::true(true);
 	}
 }
 

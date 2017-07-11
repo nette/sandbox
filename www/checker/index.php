@@ -37,7 +37,7 @@ $tests[] = [
 
 $tests[] = [
 	'title' => 'PHP version',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => version_compare(PHP_VERSION, '5.6.0', '>='),
 	'message' => PHP_VERSION,
 	'description' => 'Your PHP version is too old. Nette Framework requires at least PHP 5.6.0 or higher.',
@@ -48,26 +48,26 @@ $tests[] = [
 	'message' => ini_get('memory_limit'),
 ];
 
-if (!isset($_SERVER['SERVER_SOFTWARE']) || strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== FALSE) {
+if (!isset($_SERVER['SERVER_SOFTWARE']) || strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
 	$tests['hf'] = [
 		'title' => '.htaccess file protection',
-		'required' => FALSE,
+		'required' => false,
 		'description' => 'File protection by <code>.htaccess</code> is not present. You must be careful to put files into document_root folder.',
 		'script' => '<script src="assets/denied/checker.js"></script> <script>displayResult("hf", typeof fileProtectionChecker == "undefined")</script>',
 	];
 
 	$tests['hr'] = [
 		'title' => '.htaccess mod_rewrite',
-		'required' => FALSE,
+		'required' => false,
 		'description' => 'Mod_rewrite is probably not present. You will not be able to use Cool URL.',
 		'script' => '<script src="assets/rewrite/checker"></script> <script>displayResult("hr", typeof modRewriteChecker == "boolean")</script>',
 	];
 }
 
-if (!isset($_SERVER['SERVER_SOFTWARE']) || strpos($_SERVER['SERVER_SOFTWARE'], 'nginx') !== FALSE) {
+if (!isset($_SERVER['SERVER_SOFTWARE']) || strpos($_SERVER['SERVER_SOFTWARE'], 'nginx') !== false) {
 	$tests['ng'] = [
 		'title' => 'try_files rewrite rules',
-		'required' => FALSE,
+		'required' => false,
 		'description' => 'Rewrite rules in nginx are probably not correct. Use try_files $uri $uri/ /index.php$is_args$args;',
 		'script' => '<script src="assets/nginx/checker.php?ok"></script> <script>displayResult("ng", nginxChecker === 1)</script>',
 	];
@@ -75,28 +75,28 @@ if (!isset($_SERVER['SERVER_SOFTWARE']) || strpos($_SERVER['SERVER_SOFTWARE'], '
 
 $tests[] = [
 	'title' => 'Function ini_set()',
-	'required' => FALSE,
+	'required' => false,
 	'passed' => function_exists('ini_set'),
 	'description' => 'Function <code>ini_set()</code> is disabled. Some parts of Nette Framework may not work properly.',
 ];
 
 $tests[] = [
 	'title' => 'Function error_reporting()',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => function_exists('error_reporting'),
 	'description' => 'Function <code>error_reporting()</code> is disabled. Nette Framework requires this to be enabled.',
 ];
 
 $tests[] = [
 	'title' => 'Function flock()',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => flock(fopen(__FILE__, 'r'), LOCK_SH),
 	'description' => 'Function <code>flock()</code> is not supported on this filesystem. Nette Framework requires this to process atomic file operations.',
 ];
 
 $tests[] = [
 	'title' => 'Register_globals',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => !iniFlag('register_globals'),
 	'message' => 'Disabled',
 	'errorMessage' => 'Enabled',
@@ -105,21 +105,21 @@ $tests[] = [
 
 $tests[] = [
 	'title' => 'Variables_order',
-	'required' => TRUE,
-	'passed' => strpos(ini_get('variables_order'), 'G') !== FALSE && strpos(ini_get('variables_order'), 'P') !== FALSE && strpos(ini_get('variables_order'), 'C') !== FALSE,
+	'required' => true,
+	'passed' => strpos(ini_get('variables_order'), 'G') !== false && strpos(ini_get('variables_order'), 'P') !== false && strpos(ini_get('variables_order'), 'C') !== false,
 	'description' => 'Configuration directive <code>variables_order</code> is missing. Nette Framework requires this to be set.',
 ];
 
 $tests[] = [
 	'title' => 'Session auto-start',
-	'required' => FALSE,
+	'required' => false,
 	'passed' => session_id() === '' && !defined('SID'),
 	'description' => 'Session auto-start is enabled. Nette Framework recommends not to use this directive for security reasons.',
 ];
 
 $tests[] = [
 	'title' => 'PCRE with UTF-8 support',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => @preg_match('/pcre/u', 'pcre'),
 	'description' => 'PCRE extension must support UTF-8.',
 ];
@@ -127,14 +127,14 @@ $tests[] = [
 $reflection = new ReflectionFunction('iniFlag');
 $tests[] = [
 	'title' => 'Reflection phpDoc',
-	'required' => TRUE,
-	'passed' => strpos($reflection->getDocComment(), 'Gets') !== FALSE,
+	'required' => true,
+	'passed' => strpos($reflection->getDocComment(), 'Gets') !== false,
 	'description' => 'Reflection phpDoc are not available (probably due to an eAccelerator bug). You cannot use @annotations.',
 ];
 
 $tests[] = [
 	'title' => 'ICONV extension',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => extension_loaded('iconv') && (ICONV_IMPL !== 'unknown') && @iconv('UTF-16', 'UTF-8//IGNORE', iconv('UTF-8', 'UTF-16//IGNORE', 'test')) === 'test',
 	'message' => 'Enabled and works properly',
 	'errorMessage' => 'Disabled or does not work properly',
@@ -143,49 +143,49 @@ $tests[] = [
 
 $tests[] = [
 	'title' => 'JSON extension',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => extension_loaded('json'),
 ];
 
 $tests[] = [
 	'title' => 'Fileinfo extension',
-	'required' => FALSE,
+	'required' => false,
 	'passed' => extension_loaded('fileinfo'),
 	'description' => 'Fileinfo extension is absent. You will not be able to detect content-type of uploaded files.',
 ];
 
 $tests[] = [
 	'title' => 'PHP tokenizer',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => extension_loaded('tokenizer'),
 	'description' => 'PHP tokenizer is required.',
 ];
 
 $tests[] = [
 	'title' => 'PDO extension',
-	'required' => FALSE,
+	'required' => false,
 	'passed' => $pdo = extension_loaded('pdo') && PDO::getAvailableDrivers(),
-	'message' => $pdo ? 'Available drivers: ' . implode(' ', PDO::getAvailableDrivers()) : NULL,
+	'message' => $pdo ? 'Available drivers: ' . implode(' ', PDO::getAvailableDrivers()) : null,
 	'description' => 'PDO extension or PDO drivers are absent. You will not be able to use <code>Nette\Database</code>.',
 ];
 
 $tests[] = [
 	'title' => 'PDO SQLite extension',
-	'required' => FALSE,
+	'required' => false,
 	'passed' => extension_loaded('pdo_sqlite'),
 	'description' => 'PDO SQLite driver is absent. You will not be able to use <code>SQLiteJournal</code>, i.e. tags in caching.',
 ];
 
 $tests[] = [
 	'title' => 'Multibyte String extension',
-	'required' => FALSE,
+	'required' => false,
 	'passed' => extension_loaded('mbstring'),
 	'description' => 'Multibyte String extension is absent. Some internationalization components may not work properly.',
 ];
 
 $tests[] = [
 	'title' => 'Multibyte String function overloading',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => !extension_loaded('mbstring') || !(mb_get_info('func_overload') & 2),
 	'message' => 'Disabled',
 	'errorMessage' => 'Enabled',
@@ -194,42 +194,42 @@ $tests[] = [
 
 $tests[] = [
 	'title' => 'Memcache extension',
-	'required' => FALSE,
+	'required' => false,
 	'passed' => extension_loaded('memcache'),
 	'description' => 'Memcache extension is absent. You will not be able to use <code>Nette\Caching\Storages\MemcachedStorage</code>.',
 ];
 
 $tests[] = [
 	'title' => 'GD extension',
-	'required' => FALSE,
+	'required' => false,
 	'passed' => extension_loaded('gd'),
 	'description' => 'GD extension is absent. You will not be able to use <code>Nette\Image</code>.',
 ];
 
 $tests[] = [
 	'title' => 'Bundled GD extension',
-	'required' => FALSE,
+	'required' => false,
 	'passed' => extension_loaded('gd') && GD_BUNDLED,
 	'description' => 'Bundled GD extension is absent. You will not be able to use some functions such as <code>Nette\Image::filter()</code> or <code>Nette\Image::rotate()</code>.',
 ];
 
 $tests[] = [
 	'title' => 'Fileinfo extension or mime_content_type()',
-	'required' => FALSE,
+	'required' => false,
 	'passed' => extension_loaded('fileinfo') || function_exists('mime_content_type'),
 	'description' => 'Fileinfo extension or function <code>mime_content_type()</code> are absent. You will not be able to determine mime type of uploaded files.',
 ];
 
 $tests[] = [
 	'title' => 'Intl extension',
-	'required' => FALSE,
-	'passed' => class_exists('Transliterator', FALSE),
+	'required' => false,
+	'passed' => class_exists('Transliterator', false),
 	'description' => 'Class Transliterator is absent, the output of Nette\Utils\Strings::webalize() and Nette\Utils\Strings::toAscii() may not be accurate for non-latin alphabets.',
 ];
 
 $tests[] = [
 	'title' => 'HTTP_HOST or SERVER_NAME',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => isset($_SERVER['HTTP_HOST']) || isset($_SERVER['SERVER_NAME']),
 	'message' => 'Present',
 	'errorMessage' => 'Absent',
@@ -238,7 +238,7 @@ $tests[] = [
 
 $tests[] = [
 	'title' => 'REQUEST_URI or ORIG_PATH_INFO',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => isset($_SERVER['REQUEST_URI']) || isset($_SERVER['ORIG_PATH_INFO']),
 	'message' => 'Present',
 	'errorMessage' => 'Absent',
@@ -247,7 +247,7 @@ $tests[] = [
 
 $tests[] = [
 	'title' => 'SCRIPT_NAME or DOCUMENT_ROOT & SCRIPT_FILENAME',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => isset($_SERVER['SCRIPT_NAME']) || isset($_SERVER['DOCUMENT_ROOT'], $_SERVER['SCRIPT_FILENAME']),
 	'message' => 'Present',
 	'errorMessage' => 'Absent',
@@ -256,7 +256,7 @@ $tests[] = [
 
 $tests[] = [
 	'title' => 'REMOTE_ADDR or php_uname("n")',
-	'required' => TRUE,
+	'required' => true,
 	'passed' => isset($_SERVER['REMOTE_ADDR']) || function_exists('php_uname'),
 	'message' => 'Present',
 	'errorMessage' => 'Absent',
@@ -281,23 +281,23 @@ function iniFlag($var)
  */
 $redirect = round(time(), -1);
 if (!isset($_GET) || (isset($_GET['r']) && $_GET['r'] == $redirect)) {
-	$redirect = NULL;
+	$redirect = null;
 }
 
 
 /**
  * Paint it.
  */
-$errors = $warnings = FALSE;
+$errors = $warnings = false;
 
 foreach ($tests as $id => $requirement)
 {
 	$tests[$id] = $requirement = (object) $requirement;
 	if (isset($requirement->passed) && !$requirement->passed) {
 		if ($requirement->required) {
-			$errors = TRUE;
+			$errors = true;
 		} else {
-			$warnings = TRUE;
+			$warnings = true;
 		}
 	}
 }
