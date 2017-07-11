@@ -10,7 +10,7 @@ Usage: create-user.php <name> <email> <password>
 	exit(1);
 }
 
-list(, $name, $email, $password) = $_SERVER['argv'];
+[, $name, $email, $password] = $_SERVER['argv'];
 
 $container = require __DIR__ . '/../app/bootstrap.php';
 /** @var App\Model\UserManager $manager */

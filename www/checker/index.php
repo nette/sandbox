@@ -7,11 +7,12 @@
 
 
 if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) || !isset($_SERVER['REMOTE_ADDR']) ||
-	!in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']))
-{
+	!in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'], true)) {
 	header('HTTP/1.1 403 Forbidden');
 	echo 'Requirements Checker is available only from localhost';
-	for ($i = 2e3; $i; $i--) echo substr(" \t\r\n", rand(0, 3), 1);
+	for ($i = 2e3; $i; $i--) {
+		echo substr(" \t\r\n", rand(0, 3), 1);
+	}
 	exit;
 }
 
@@ -290,8 +291,7 @@ if (!isset($_GET) || (isset($_GET['r']) && $_GET['r'] == $redirect)) {
  */
 $errors = $warnings = false;
 
-foreach ($tests as $id => $requirement)
-{
+foreach ($tests as $id => $requirement) {
 	$tests[$id] = $requirement = (object) $requirement;
 	if (isset($requirement->passed) && !$requirement->passed) {
 		if ($requirement->required) {
@@ -488,12 +488,12 @@ header('Expires: Mon, 23 Jan 1978 10:00:00 GMT');
 	<?php foreach ($tests as $id => $requirement):?>
 	<?php $class = isset($requirement->passed) ? ($requirement->passed ? 'passed' : ($requirement->required ? 'failed' : 'warning')) : 'info' ?>
 	<tr id="res<?php echo $id ?>" class="<?php echo $class ?>">
-		<th><?php echo htmlSpecialChars($requirement->title) ?></th>
+		<th><?php echo htmlspecialchars($requirement->title) ?></th>
 
 		<?php if (empty($requirement->passed) && isset($requirement->errorMessage)): ?>
-			<td><?php echo htmlSpecialChars($requirement->errorMessage) ?></td>
+			<td><?php echo htmlspecialchars($requirement->errorMessage) ?></td>
 		<?php elseif (isset($requirement->message)): ?>
-			<td><?php echo htmlSpecialChars($requirement->message) ?></td>
+			<td><?php echo htmlspecialchars($requirement->message) ?></td>
 		<?php elseif (isset($requirement->passed)): ?>
 			<td><?php echo $requirement->passed ? 'Enabled' : 'Disabled' ?></td>
 		<?php else: ?>
