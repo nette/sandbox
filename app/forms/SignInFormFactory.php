@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Forms;
@@ -53,5 +52,4 @@ class SignInFormFactory
 
 		return $form;
 	}
-
 }

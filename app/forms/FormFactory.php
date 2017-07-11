@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Forms;
@@ -17,5 +16,4 @@ class FormFactory
 		$form = new Form;
 		return $form;
 	}
-
 }

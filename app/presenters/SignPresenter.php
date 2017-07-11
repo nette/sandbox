@@ -1,12 +1,10 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Presenters;
 
-use Nette;
-use Nette\Application\UI\Form;
 use App\Forms;
+use Nette\Application\UI\Form;
 
 
 class SignPresenter extends BasePresenter
@@ -51,5 +49,4 @@ class SignPresenter extends BasePresenter
 	{
 		$this->getUser()->logout();
 	}
-
 }

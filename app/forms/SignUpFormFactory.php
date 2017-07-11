@@ -1,12 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Forms;
 
+use App\Model;
 use Nette;
 use Nette\Application\UI\Form;
-use App\Model;
 
 
 class SignUpFormFactory
@@ -57,5 +56,4 @@ class SignUpFormFactory
 
 		return $form;
 	}
-
 }

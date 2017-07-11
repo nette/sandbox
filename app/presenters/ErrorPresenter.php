@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Presenters;
@@ -41,5 +40,4 @@ class ErrorPresenter implements Nette\Application\IPresenter
 			require __DIR__ . '/templates/Error/500.phtml';
 		});
 	}
-
 }

@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Model;
@@ -78,10 +77,10 @@ class UserManager implements Nette\Security\IAuthenticator
 			throw new DuplicateNameException;
 		}
 	}
-
 }
 
 
 
 class DuplicateNameException extends \Exception
-{}
+{
+}
