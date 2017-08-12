@@ -41,7 +41,9 @@ class UserManager implements Nette\Security\IAuthenticator
 	{
 		[$username, $password] = $credentials;
 
-		$row = $this->database->table(self::TABLE_NAME)->where(self::COLUMN_NAME, $username)->fetch();
+		$row = $this->database->table(self::TABLE_NAME)
+			->where(self::COLUMN_NAME, $username)
+			->fetch();
 
 		if (!$row) {
 			throw new Nette\Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);

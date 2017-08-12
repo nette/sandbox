@@ -32,7 +32,8 @@ class ErrorPresenter implements Nette\Application\IPresenter
 		if ($e instanceof Nette\Application\BadRequestException) {
 			// $this->logger->log("HTTP code {$e->getCode()}: {$e->getMessage()} in {$e->getFile()}:{$e->getLine()}", 'access');
 			[$module, , $sep] = Nette\Application\Helpers::splitName($request->getPresenterName());
-			return new Responses\ForwardResponse($request->setPresenterName($module . $sep . 'Error4xx'));
+			$errorPresenter = $module . $sep . 'Error4xx';
+			return new Responses\ForwardResponse($request->setPresenterName($errorPresenter));
 		}
 
 		$this->logger->log($e, ILogger::EXCEPTION);
