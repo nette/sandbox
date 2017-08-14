@@ -15,6 +15,14 @@ session:
 	expiration: 14 days
 
 
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=test'
+	user:
+	password:
+	options:
+		lazy: yes
+
+
 services:
 	- App\Model\UserManager
 	- App\Forms\FormFactory
