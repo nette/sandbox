@@ -196,8 +196,8 @@ $tests[] = [
 $tests[] = [
 	'title' => 'Memcache extension',
 	'required' => false,
-	'passed' => extension_loaded('memcache'),
-	'description' => 'Memcache extension is absent. You will not be able to use <code>Nette\Caching\Storages\MemcachedStorage</code>.',
+	'passed' => extension_loaded('memcache') || extension_loaded('memcached'),
+	'description' => 'Memcache extension is absent. You will not be able to use <code>Nette\Caching\Storages\MemcachedStorage</code> or <code>Nette\Caching\Storages\NewMemcachedStorage</code>.',
 ];
 
 $tests[] = [
