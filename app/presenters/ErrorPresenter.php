@@ -5,6 +5,7 @@ namespace App\Presenters;
 
 use Nette;
 use Nette\Application\Responses;
+use Nette\Http;
 use Tracy\ILogger;
 
 
@@ -37,8 +38,10 @@ class ErrorPresenter implements Nette\Application\IPresenter
 		}
 
 		$this->logger->log($e, ILogger::EXCEPTION);
-		return new Responses\CallbackResponse(function () {
-			require __DIR__ . '/templates/Error/500.phtml';
+		return new Responses\CallbackResponse(function (Http\IRequest $httpRequest, Http\IResponse $httpResponse) {
+			if (preg_match('#^text/html(?:;|$)#', $httpResponse->getHeader('Content-Type'))) {
+				require __DIR__ . '/templates/Error/500.phtml';
+			}
 		});
 	}
 }
