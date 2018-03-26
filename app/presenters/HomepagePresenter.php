@@ -6,7 +6,7 @@ namespace App\Presenters;
 
 class HomepagePresenter extends BasePresenter
 {
-	public function renderDefault()
+	public function renderDefault(): void
 	{
 		$this->template->anyVariable = 'any value';
 	}

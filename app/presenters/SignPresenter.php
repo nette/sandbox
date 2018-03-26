@@ -49,7 +49,7 @@ class SignPresenter extends BasePresenter
 	}
 
 
-	public function actionOut()
+	public function actionOut(): void
 	{
 		$this->getUser()->logout();
 	}

@@ -39,7 +39,7 @@ class SignInFormFactory
 
 		$form->addSubmit('send', 'Sign in');
 
-		$form->onSuccess[] = function (Form $form, $values) use ($onSuccess) {
+		$form->onSuccess[] = function (Form $form, \stdClass $values) use ($onSuccess) {
 			try {
 				$this->user->setExpiration($values->remember ? '14 days' : '20 minutes');
 				$this->user->login($values->username, $values->password);
