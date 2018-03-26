@@ -44,7 +44,7 @@ class SignUpFormFactory
 
 		$form->addSubmit('send', 'Sign up');
 
-		$form->onSuccess[] = function (Form $form, $values) use ($onSuccess) {
+		$form->onSuccess[] = function (Form $form, \stdClass $values) use ($onSuccess): void {
 			try {
 				$this->userManager->add($values->username, $values->email, $values->password);
 			} catch (Model\DuplicateNameException $e) {

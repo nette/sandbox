@@ -31,7 +31,7 @@ class SignPresenter extends BasePresenter
 	 */
 	protected function createComponentSignInForm(): Form
 	{
-		return $this->signInFactory->create(function () {
+		return $this->signInFactory->create(function (): void {
 			$this->restoreRequest($this->backlink);
 			$this->redirect('Homepage:');
 		});
@@ -43,13 +43,13 @@ class SignPresenter extends BasePresenter
 	 */
 	protected function createComponentSignUpForm(): Form
 	{
-		return $this->signUpFactory->create(function () {
+		return $this->signUpFactory->create(function (): void {
 			$this->redirect('Homepage:');
 		});
 	}
 
 
-	public function actionOut()
+	public function actionOut(): void
 	{
 		$this->getUser()->logout();
 	}
