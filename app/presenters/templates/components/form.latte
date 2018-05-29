@@ -1,6 +1,6 @@
 {define form $formName}
 	<form n:name=$formName>
-	<ul class=error n:if="$form->ownErrors">
+	<ul class=error n:ifcontent>
 		<li n:foreach="$form->ownErrors as $error">{$error}</li>
 	</ul>
 
@@ -20,7 +20,7 @@
 {* for Bootstrap v3 *}
 {define bootstrap-form $formName}
 	<form n:name=$formName class=form-horizontal>
-	<ul class=error n:if="$form->ownErrors">
+	<ul class=error n:ifcontent>
 		<li n:foreach="$form->ownErrors as $error">{$error}</li>
 	</ul>
 
