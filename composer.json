@@ -16,6 +16,7 @@
 	],
 	"require": {
 		"php": ">=7.1",
+		"ext-tokenizer": "*",
 		"nette/application": "^3.0",
 		"nette/bootstrap": "^3.0",
 		"nette/caching": "^3.0",
@@ -41,5 +42,8 @@
 		"platform": {
 			"php": "7.1"
 		}
+	},
+	"scripts": {
+		"test": ["./vendor/bin/tester --colors -s -c ./tests/php.ini ./tests/"]
 	}
 }
