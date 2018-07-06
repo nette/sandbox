@@ -18,7 +18,8 @@
 		"php": ">=7.1",
 		"ext-pdo": "*",
 		"ext-tokenizer": "*",
-
+		"dg/adminer-custom": "^1.8",
+		"latte/latte": "^3.0",
 		"nette/application": "^3.0",
 		"nette/bootstrap": "^3.0",
 		"nette/caching": "^3.0",
@@ -32,20 +33,19 @@
 		"nette/safe-stream": "^2.3",
 		"nette/security": "^3.0",
 		"nette/utils": "^3.0",
-		"latte/latte": "^3.0",
-		"tracy/tracy": "^2.4",
-		"dg/adminer-custom": "^1.8"
+		"tracy/tracy": "^2.4"
 	},
 	"require-dev": {
 		"nette/tester": "^2.0",
 		"phpstan/phpstan-nette": "^0.10",
-		"phpstan/phpstan-strict-rules": "^0.10.0@dev"
+		"phpstan/phpstan-strict-rules": "^0.10"
 	},
 	"minimum-stability": "dev",
 	"config": {
 		"platform": {
 			"php": "7.1"
-		}
+		},
+		"sort-packages": true
 	},
 	"autoload": {
 		"psr-4": {
