@@ -1,6 +1,10 @@
 log/*
 temp/*
+!/.travis.yml
 !.gitignore
 !.htaccess
 !web.config
 app/config/config.local.neon
+
+# ignore Composer downloads
+/vendor/*
