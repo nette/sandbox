@@ -48,6 +48,7 @@ class SignUpFormFactory
 			try {
 				$this->userManager->add($values->username, $values->email, $values->password);
 			} catch (Model\DuplicateNameException $e) {
+			    /** @var $form['username'] BaseControl */
 				$form['username']->addError('Username is already taken.');
 				return;
 			}

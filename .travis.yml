@@ -27,10 +27,14 @@ install:
 
 script:
   - composer test
-#  - if [[ "$DRIVER" = 'phpdbg' ]]; then phpdbg -qrr vendor/bin/phpunit --coverage-clover=coverage.xml; fi
 
 jobs:
     include:
+        -   stage: PHP Static Analysis
+            php: 7.2
+            script:
+                - composer phpstan
+
         -   stage: Code Coverage
             php: 7.2
             script:
@@ -41,9 +45,6 @@ jobs:
 
     allow_failures:
         -   stage: Code Coverage
-
-#after_success:
-#  - bash <(curl -s https://codecov.io/bash)
 
 after_failure:
     # Print *.actual content

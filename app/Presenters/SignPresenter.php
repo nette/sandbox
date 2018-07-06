@@ -9,7 +9,10 @@ use Nette\Application\UI\Form;
 
 class SignPresenter extends BasePresenter
 {
-	/** @persistent */
+	/**
+     * @persistent
+     * @var string
+     */
 	public $backlink = '';
 
 	/** @var Forms\SignInFormFactory */
@@ -21,6 +24,7 @@ class SignPresenter extends BasePresenter
 
 	public function __construct(Forms\SignInFormFactory $signInFactory, Forms\SignUpFormFactory $signUpFactory)
 	{
+        parent::__construct();
 		$this->signInFactory = $signInFactory;
 		$this->signUpFactory = $signUpFactory;
 	}

@@ -2,17 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Test;
+namespace App\Tests;
 
 use Nette;
 use Tester;
 use Tester\Assert;
 
+
 $container = require __DIR__ . '/bootstrap.php';
 
 
+/**
+ * @testCase
+ */
 class ExampleTest extends Tester\TestCase
 {
+    /** @var Nette\DI\Container $container */
 	private $container;
 
 
@@ -22,17 +27,16 @@ class ExampleTest extends Tester\TestCase
 	}
 
 
-	public function setUp()
+	public function setUp() : void
 	{
 	}
 
 
-	public function testSomething()
+	public function testSomething() : void
 	{
 		Assert::true(true);
 	}
 }
-
 
 $test = new ExampleTest($container);
 $test->run();

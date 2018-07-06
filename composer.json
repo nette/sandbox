@@ -16,7 +16,9 @@
 	],
 	"require": {
 		"php": ">=7.1",
+		"ext-pdo": "*",
 		"ext-tokenizer": "*",
+
 		"nette/application": "^3.0",
 		"nette/bootstrap": "^3.0",
 		"nette/caching": "^3.0",
@@ -35,7 +37,9 @@
 		"dg/adminer-custom": "^1.8"
 	},
 	"require-dev": {
-		"nette/tester": "^2.0"
+		"nette/tester": "^2.0",
+		"phpstan/phpstan-nette": "^0.10",
+		"phpstan/phpstan-strict-rules": "^0.10.0@dev"
 	},
 	"minimum-stability": "dev",
 	"config": {
@@ -43,7 +47,18 @@
 			"php": "7.1"
 		}
 	},
+	"autoload": {
+		"psr-4": {
+			"App\\": "app/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"App\\Tests\\": "tests/"
+		}
+	},
 	"scripts": {
+		"phpstan": ["./vendor/bin/phpstan --ansi analyse --level 7 --configuration ./phpstan.neon ./app ./tests"],
 		"test": ["./vendor/bin/tester --colors -s -c ./tests/php.ini ./tests/"]
 	}
 }
