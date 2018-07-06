@@ -17,7 +17,7 @@ $container = require __DIR__ . '/bootstrap.php';
  */
 class ExampleTest extends Tester\TestCase
 {
-    /** @var Nette\DI\Container $container */
+	/** @var Nette\DI\Container $container */
 	private $container;
 
 
