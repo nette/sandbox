@@ -4,6 +4,10 @@ php:
     - 7.2
     - master
 
+os:
+  - linux
+  - osx
+
 matrix:
   allow_failures:
     - php: master
