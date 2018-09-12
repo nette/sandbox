@@ -7,7 +7,7 @@ namespace App\Presenters;
 use Nette;
 
 
-class Error4xxPresenter extends BasePresenter
+final class Error4xxPresenter extends BasePresenter
 {
 	public function startup(): void
 	{
