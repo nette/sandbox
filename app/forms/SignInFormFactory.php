@@ -9,7 +9,7 @@ use Nette\Application\UI\Form;
 use Nette\Security\User;
 
 
-class SignInFormFactory
+final class SignInFormFactory
 {
 	use Nette\SmartObject;
 

@@ -8,7 +8,7 @@ use Nette;
 use Nette\Application\UI\Form;
 
 
-class FormFactory
+final class FormFactory
 {
 	use Nette\SmartObject;
 
