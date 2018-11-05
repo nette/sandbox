@@ -1,4 +1,5 @@
 # Apache configuration file (see httpd.apache.org/docs/current/mod/quickreference.html)
+Allow from all
 
 # disable directory listing
 <IfModule mod_autoindex.c>
