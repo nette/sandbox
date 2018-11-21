@@ -1,5 +1,5 @@
-# Apache configuration file (see httpd.apache.org/docs/current/mod/quickreference.html)
-Allow from all
+# Apache configuration file (see https://httpd.apache.org/docs/current/mod/quickreference.html)
+Require all granted
 
 # disable directory listing
 <IfModule mod_autoindex.c>
