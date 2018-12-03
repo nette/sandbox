@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+require __DIR__ . '/../vendor/autoload.php';
+
+
+$container = App\Booting::boot()
+	->createContainer();
+
 if (!isset($_SERVER['argv'][3])) {
 	echo '
 Add new user to database.
@@ -13,8 +19,6 @@ Usage: create-user.php <name> <email> <password>
 
 [, $name, $email, $password] = $_SERVER['argv'];
 
-$container = require __DIR__ . '/../app/bootstrap.php';
-/** @var App\Model\UserManager $manager */
 $manager = $container->getByType(App\Model\UserManager::class);
 
 try {

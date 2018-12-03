@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Test;
+namespace App\Tests;
 
 use Nette;
 use Tester;
 use Tester\Assert;
 
-$container = require __DIR__ . '/bootstrap.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 
 class ExampleTest extends Tester\TestCase
@@ -33,6 +33,9 @@ class ExampleTest extends Tester\TestCase
 	}
 }
 
+
+$container = \App\Booting::bootForTests()
+	->createContainer();
 
 $test = new ExampleTest($container);
 $test->run();
