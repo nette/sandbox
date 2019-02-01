@@ -24,8 +24,8 @@ class Booting
 			->register();
 
 		$configurator
-			->addConfig(__DIR__ . '/config/config.neon')
-			->addConfig(__DIR__ . '/config/config.local.neon');
+			->addConfig(__DIR__ . '/config/common.neon')
+			->addConfig(__DIR__ . '/config/local.neon');
 
 		return $configurator;
 	}
