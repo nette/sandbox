@@ -136,7 +136,7 @@ $tests[] = [
 $tests[] = [
 	'title' => 'ICONV extension',
 	'required' => true,
-	'passed' => extension_loaded('iconv') && (ICONV_IMPL !== 'unknown') && @iconv('UTF-16', 'UTF-8//IGNORE', iconv('UTF-8', 'UTF-16//IGNORE', 'test')) === 'test',
+	'passed' => extension_loaded('iconv') && @iconv('UTF-16', 'UTF-8//IGNORE', iconv('UTF-8', 'UTF-16//IGNORE', 'test')) === 'test',
 	'message' => 'Enabled and works properly',
 	'errorMessage' => 'Disabled or does not work properly',
 	'description' => 'ICONV extension is required and must work properly.',
