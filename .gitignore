@@ -1,6 +1,1 @@
-log/*
-temp/*
-!.gitignore
-!.htaccess
-!web.config
 app/config/local.neon
