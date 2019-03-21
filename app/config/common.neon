@@ -1,7 +1,46 @@
-#
-# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
-# https://nette.org/security-warning
-#
+extensions:
+	rabbit: Kdyby\RabbitMq\DI\RabbitMqExtension
+	events: Kdyby\Events\DI\EventsExtension
+	redis: Kdyby\Redis\DI\RedisExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	translation: Kdyby\Translation\DI\TranslationExtension
+	console: Kdyby\Console\DI\ConsoleExtension
+	monolog: Kdyby\Monolog\DI\MonologExtension
+
+doctrine:
+	user:
+	password:
+	dbname:
+
+redis:
+	journal: on
+	storage: on
+	session: on
+
+rabbit:
+	connection:
+		host: localhost
+		port: 5672
+		user: 'guest'
+		password: 'guest'
+		vhost: '/'
+
+	producers:
+		calculateRandomNumber:
+			connection: default
+			exchange: {name: 'calculate-random-number', type: direct}
+
+	consumers:
+		calculateRandomNumber:
+			connection: default
+			exchange: {name: 'calculate-random-number', type: direct}
+			queue: {name: 'calculate-random-number'}
+			callback: [@App\Model\CalculateRandomNumber, calculate]
+
+translation:
+	default: cs
+
 parameters:
 
 
@@ -29,3 +68,11 @@ services:
 	- App\Forms\SignInFormFactory
 	- App\Forms\SignUpFormFactory
 	router: App\Router\RouterFactory::createRouter
+
+	calculateRandomNumber:
+		factory: App\Model\CalculateRandomNumber
+
+	helloCommand:
+		factory: App\Model\HelloCommand
+		tags:
+			- kdyby.console.command
