@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // Upgrades a Major Versions of packages in composer.json
 //
 // usage: composer-upgrade.php                (upgrades all Nette packages)
