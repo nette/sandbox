@@ -5,7 +5,7 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 
-$container = App\Booting::boot()
+$container = App\Bootstrap::boot()
 	->createContainer();
 
 if (!isset($_SERVER['argv'][3])) {
