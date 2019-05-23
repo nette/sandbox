@@ -1,0 +1,11 @@
+language: php
+php:
+  - '7.1'
+  - '7.2'
+  - '7.3'
+
+before_install:
+  - composer install --no-interaction
+
+script:
+  - vendor/bin/tester tests -s
