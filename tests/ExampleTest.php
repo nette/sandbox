@@ -34,7 +34,7 @@ class ExampleTest extends Tester\TestCase
 }
 
 
-$container = \App\Booting::bootForTests()
+$container = \App\Bootstrap::bootForTests()
 	->createContainer();
 
 $test = new ExampleTest($container);
