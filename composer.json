@@ -39,10 +39,5 @@
 	"autoload": {
 		"classmap": ["app/Bootstrap.php"]
 	},
-	"minimum-stability": "dev",
-	"config": {
-		"platform": {
-			"php": "7.1"
-		}
-	}
+	"minimum-stability": "dev"
 }

@@ -54,18 +54,3 @@ Adminer
 
 [Adminer](https://www.adminer.org/) is full-featured database management tool written in PHP and it is part of this Sandbox.
 To use it, browse to the subdirectory `/adminer` in your project root (i.e. `http://localhost:8000/adminer`).
-
-
-Notice: Composer PHP version
-----------------------------
-
-This project forces PHP 5.6 (eventually 7.1) as your PHP version for Composer packages. If you have newer
-version on production server you should change it in `composer.json`:
-
-```json
-"config": {
-	"platform": {
-		"php": "7.2"
-	}
-}
-```
