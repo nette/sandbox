@@ -6,13 +6,10 @@
 </div>
 
 <div id="content">
-	<h2>Playgrounds:</h2>
-	<ul>
-		<li>
-			<a n:href="Redis:default">Redis</a>
-		</li>
-	</ul>
+	<h2><a n:href="Homepage:default">Homepage</a></h2>
 
+	{\Tracy\Dumper::toHtml($keyedArray)|noescape}
+	{\Tracy\Dumper::toHtml($article)|noescape}
 </div>
 {/block}
 
