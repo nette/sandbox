@@ -30,14 +30,15 @@
 		"nette/security": "^3.0",
 		"nette/utils": "^3.0",
 		"latte/latte": "^2.5",
-		"tracy/tracy": "^2.6",
-		"dg/adminer-custom": "^1.8"
+		"tracy/tracy": "^2.7",
+		"dg/adminer-custom": "^1.19"
 	},
 	"require-dev": {
-		"nette/tester": "^2.0"
+		"nette/tester": "^2.3"
 	},
 	"autoload": {
 		"classmap": ["app/Bootstrap.php"]
 	},
-	"minimum-stability": "dev"
+	"minimum-stability": "dev",
+	"prefer-stable": true
 }
