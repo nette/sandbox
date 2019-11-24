@@ -17,12 +17,14 @@ if ($error) {
 }
 
 
+$composer = json_decode(file_get_contents('composer.json'));
 $outdated = json_decode(implode($output));
 $upgrade = [];
 foreach ($outdated->installed as $package) {
 	foreach ($masks as $mask) {
 		if (fnmatch($mask, $package->name)) {
-			$upgrade[] = $package->name;
+			$mode = isset($composer->require->{$package->name}) ? '' : '--dev';
+			$upgrade[$mode][] = $package->name;
 			continue 2;
 		}
 	}
@@ -33,5 +35,6 @@ if (!$upgrade) {
 	exit;
 }
 
-
-passthru('composer --no-update --no-scripts require ' . implode(' ', $upgrade));
+foreach ($upgrade as $mode => $packages) {
+	passthru('composer --no-update --no-scripts require ' . $mode . ' ' . implode(' ', $packages));
+}
