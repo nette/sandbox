@@ -34,10 +34,14 @@
 		"dg/adminer-custom": "^1.8"
 	},
 	"require-dev": {
-		"nette/tester": "^2.0"
+		"nette/tester": "^2.0",
+		"phpstan/phpstan-nette": "^0.12"
 	},
 	"autoload": {
 		"classmap": ["app/Bootstrap.php"]
 	},
-	"minimum-stability": "dev"
+	"minimum-stability": "dev",
+	"scripts": {
+		"phpstan": "phpstan analyse --level 5 --configuration tests/phpstan.neon app bin www"
+	}
 }
