@@ -1,0 +1,10 @@
+includes:
+	- vendor/phpstan/phpstan-nette/extension.neon
+
+parameters:
+	autoload_directories:
+		- app
+
+	excludes_analyse:
+		- www/adminer
+		- www/checker

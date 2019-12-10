@@ -54,3 +54,12 @@ Adminer
 
 [Adminer](https://www.adminer.org/) is full-featured database management tool written in PHP and it is part of this Sandbox.
 To use it, browse to the subdirectory `/adminer` in your project root (i.e. `http://localhost:8000/adminer`).
+
+
+PHPStan
+-------
+
+[PHPStan](https://github.com/phpstan/phpstan) is static analysis tool to discover bugs in your code without running it.
+Run PHPStan like this:
+
+	composer phpstan
