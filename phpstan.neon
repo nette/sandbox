@@ -2,7 +2,9 @@ includes:
 	- vendor/phpstan/phpstan-nette/extension.neon
 
 parameters:
-	autoload_directories:
+	level: 6
+
+	scanDirectories:
 		- app
 
 	excludes_analyse:
