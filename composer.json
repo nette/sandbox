@@ -38,7 +38,9 @@
 		"phpstan/phpstan-nette": "^0.12"
 	},
 	"autoload": {
-		"classmap": ["app/Bootstrap.php"]
+		"psr-4": {
+			"App\\": "app"
+		}
 	},
 	"minimum-stability": "dev",
 	"scripts": {
