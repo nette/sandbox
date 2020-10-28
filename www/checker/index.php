@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /**
  * Requirements Checker: This script will check if your system meets
@@ -33,7 +34,7 @@ foreach (['function_exists', 'version_compare', 'extension_loaded', 'ini_get'] a
  */
 $tests[] = [
 	'title' => 'Web server',
-	'message' => isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : 'unknown',
+	'message' => $_SERVER['SERVER_SOFTWARE'] ?? 'unknown',
 ];
 
 $tests[] = [
