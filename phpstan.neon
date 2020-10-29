@@ -1,12 +1,15 @@
-includes:
-	- vendor/phpstan/phpstan-nette/extension.neon
-
 parameters:
 	level: 6
 
-	scanDirectories:
+	paths:
 		- app
+		- bin
+		- www
 
 	excludes_analyse:
 		- www/adminer
 		- www/checker
+
+
+includes:
+	- vendor/phpstan/phpstan-nette/extension.neon
