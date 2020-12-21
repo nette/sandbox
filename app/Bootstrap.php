@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use Nette\Configurator;
+use Nette\Bootstrap\Configurator;
 
 
 class Bootstrap
