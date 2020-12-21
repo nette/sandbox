@@ -43,7 +43,7 @@ via a web browser. See [security warning](https://nette.org/security-warning).
 Requirements
 ------------
 
-- Sandbox for Nette 3.0 requires PHP 7.1
+- Sandbox for Nette 3.1 requires PHP 7.1
 
 To check whether server configuration meets the minimum requirements for
 Nette Framework browse to the directory `/checker` in your project root (i.e. `http://localhost:8000/checker`).
