@@ -15,11 +15,9 @@ final class SignUpFormFactory
 
 	private const PASSWORD_MIN_LENGTH = 7;
 
-	/** @var FormFactory */
-	private $factory;
+	private FormFactory $factory;
 
-	/** @var Model\UserManager */
-	private $userManager;
+	private Model\UserManager $userManager;
 
 
 	public function __construct(FormFactory $factory, Model\UserManager $userManager)

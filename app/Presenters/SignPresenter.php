@@ -13,11 +13,9 @@ final class SignPresenter extends BasePresenter
 	/** @persistent */
 	public $backlink = '';
 
-	/** @var Forms\SignInFormFactory */
-	private $signInFactory;
+	private Forms\SignInFormFactory $signInFactory;
 
-	/** @var Forms\SignUpFormFactory */
-	private $signUpFactory;
+	private Forms\SignUpFormFactory $signUpFactory;
 
 
 	public function __construct(Forms\SignInFormFactory $signInFactory, Forms\SignUpFormFactory $signUpFactory)
