@@ -11,7 +11,7 @@ use Nette\Security\Passwords;
 /**
  * Users management.
  */
-final class UserManager implements Nette\Security\IAuthenticator
+final class UserManager implements Nette\Security\Authenticator
 {
 	use Nette\SmartObject;
 
@@ -24,12 +24,12 @@ final class UserManager implements Nette\Security\IAuthenticator
 		COLUMN_ROLE = 'role';
 
 
-	private Nette\Database\Context $database;
+	private Nette\Database\Explorer $database;
 
 	private Passwords $passwords;
 
 
-	public function __construct(Nette\Database\Context $database, Passwords $passwords)
+	public function __construct(Nette\Database\Explorer $database, Passwords $passwords)
 	{
 		$this->database = $database;
 		$this->passwords = $passwords;
@@ -40,10 +40,8 @@ final class UserManager implements Nette\Security\IAuthenticator
 	 * Performs an authentication.
 	 * @throws Nette\Security\AuthenticationException
 	 */
-	public function authenticate(array $credentials): Nette\Security\IIdentity
+	public function authenticate(string $username, string $password): Nette\Security\SimpleIdentity
 	{
-		[$username, $password] = $credentials;
-
 		$row = $this->database->table(self::TABLE_NAME)
 			->where(self::COLUMN_NAME, $username)
 			->fetch();
@@ -62,7 +60,7 @@ final class UserManager implements Nette\Security\IAuthenticator
 
 		$arr = $row->toArray();
 		unset($arr[self::COLUMN_PASSWORD_HASH]);
-		return new Nette\Security\Identity($row[self::COLUMN_ID], $row[self::COLUMN_ROLE], $arr);
+		return new Nette\Security\SimpleIdentity($row[self::COLUMN_ID], $row[self::COLUMN_ROLE], $arr);
 	}
 
 
