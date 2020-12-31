@@ -36,7 +36,7 @@ Then visit `http://localhost:8000` in your browser to see the welcome page.
 For Apache or Nginx, setup a virtual host to point to the `www/` directory of the project and you
 should be ready to go.
 
-It is CRITICAL that whole `app/`, `log/` and `temp/` directories are not accessible directly
+It is CRITICAL that whole `app/`, `config`, `log/` and `temp/` directories are not accessible directly
 via a web browser. See [security warning](https://nette.org/security-warning).
 
 
