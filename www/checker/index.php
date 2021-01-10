@@ -273,7 +273,7 @@ $tests[] = [
  */
 function iniFlag($var)
 {
-	$status = strtolower(ini_get($var));
+	$status = strtolower((string) ini_get($var));
 	return $status === 'on' || $status === 'true' || $status === 'yes' || (int) $status;
 }
 
