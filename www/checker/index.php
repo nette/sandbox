@@ -40,9 +40,9 @@ $tests[] = [
 $tests[] = [
 	'title' => 'PHP version',
 	'required' => true,
-	'passed' => version_compare(PHP_VERSION, '5.6.0', '>='),
+	'passed' => version_compare(PHP_VERSION, '7.4.0', '>='),
 	'message' => PHP_VERSION,
-	'description' => 'Your PHP version is too old. Nette Framework requires at least PHP 5.6.0 or higher.',
+	'description' => 'Your PHP version is too old. Nette Framework requires at least PHP 7.4.0 or higher.',
 ];
 
 $tests[] = [
