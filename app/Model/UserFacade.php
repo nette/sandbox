@@ -11,7 +11,7 @@ use Nette\Security\Passwords;
 /**
  * Users management.
  */
-final class UserManager implements Nette\Security\Authenticator
+final class UserFacade implements Nette\Security\Authenticator
 {
 	use Nette\SmartObject;
 

@@ -24,7 +24,7 @@ database:
 
 
 services:
-	- App\Model\UserManager
+	- App\Model\UserFacade
 	- App\Forms\FormFactory
 	- App\Forms\SignInFormFactory
 	- App\Forms\SignUpFormFactory

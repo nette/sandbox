@@ -19,7 +19,7 @@ Usage: create-user.php <name> <email> <password>
 
 [, $name, $email, $password] = $_SERVER['argv'];
 
-$manager = $container->getByType(App\Model\UserManager::class);
+$manager = $container->getByType(App\Model\UserFacade::class);
 
 try {
 	$manager->add($name, $email, $password);
