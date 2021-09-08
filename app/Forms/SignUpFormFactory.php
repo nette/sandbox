@@ -13,8 +13,6 @@ final class SignUpFormFactory
 {
 	use Nette\SmartObject;
 
-	private const PASSWORD_MIN_LENGTH = 7;
-
 	private FormFactory $factory;
 
 	private Model\UserFacade $userFacade;
@@ -37,9 +35,9 @@ final class SignUpFormFactory
 			->setRequired('Please enter your e-mail.');
 
 		$form->addPassword('password', 'Create a password:')
-			->setOption('description', sprintf('at least %d characters', self::PASSWORD_MIN_LENGTH))
+			->setOption('description', sprintf('at least %d characters', $this->userFacade::PASSWORD_MIN_LENGTH))
 			->setRequired('Please create a password.')
-			->addRule($form::MIN_LENGTH, null, self::PASSWORD_MIN_LENGTH);
+			->addRule($form::MIN_LENGTH, null, $this->userFacade::PASSWORD_MIN_LENGTH);
 
 		$form->addSubmit('send', 'Sign up');
 

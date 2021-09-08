@@ -15,6 +15,8 @@ final class UserFacade implements Nette\Security\Authenticator
 {
 	use Nette\SmartObject;
 
+	public const PASSWORD_MIN_LENGTH = 7;
+
 	private const
 		TABLE_NAME = 'users',
 		COLUMN_ID = 'id',
